@@ -1,0 +1,23 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    display: flex;
+    color: #F7E4C4;
+    font-family: "Dancing Script", cursive;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #F7E4C4;
+}
+
+.footer a {
+    color: #FFD400;
+    text-decoration: none;
+}
+
+.golden {
+    color: #FFD400;
+}
