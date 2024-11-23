@@ -12,8 +12,8 @@
 }
 
 .welcome-msg p {
-    font-family: "Corinthia", cursive;
-    color: #fff;
+    font-family: "Dancing Script", cursive;
+    color: #F7E4C4;
     font-size: 1.8rem;
     text-align: center;
 }
@@ -28,6 +28,17 @@
     background: rgba(0, 0, 0, 0.9);
     margin: 20px 0;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.welcome-msg button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-msg button:focus {
+    outline: none;
 }
 
 #browse-btn {
