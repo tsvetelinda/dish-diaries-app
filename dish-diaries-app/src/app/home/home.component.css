@@ -1,9 +1,9 @@
 .welcome-msg {
     width: 400px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
-    top: 70%;
-    transform: translateY(-70%);
+    top: 50%;
+    transform: translateY(-50%);
     left: 10%;
     padding: 40px 40px 20px 40px;
     display: flex;
