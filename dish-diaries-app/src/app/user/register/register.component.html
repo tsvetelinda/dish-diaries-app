@@ -1,0 +1,45 @@
+<div class="register-container">
+    <p class="prompt-msg register">Let's Turn Up the Heat!<br>Step into our kitchen and stir up some amazing flavors with us!</p>
+    <form>
+        <div class="row-wrapper">
+            <div class="input-wrapper">
+                <label for="chef-name">Chef Name</label>
+                <input type="text" id="chef-name" name="chef-name" required>
+            </div>
+            <div class="input-wrapper">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+        </div>
+        <div class="row-wrapper">
+            <div class="input-wrapper">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-wrapper">
+                <label for="re-password">Repeat Password</label>
+                <input type="password" id="re-password" name="re-password" required>
+            </div>
+        </div>
+        <div class="row-wrapper">
+            <div class="input-wrapper">
+                <label for="favorite-cuisine">Favorite Cuisine</label>
+                <input type="text" id="favorite-cuisine" name="favorite-cuisine" placeholder="e.g., Italian, Mexican">
+            </div>
+            <div class="input-wrapper">
+                <label for="cooking-level">Cooking Skill Level</label>
+                <select id="cooking-level" name="cooking-level">
+                    <option value="beginner">Freshly Baked</option>
+                    <option value="intermediate">Cooking Up</option>
+                    <option value="advanced">Stirring Magic</option>
+                    <option value="expert">Chef in Training</option>
+                </select>
+            </div>
+        </div>
+        <input type="submit" value="Register">
+    </form>
+    <p class="prompt-msg">Been Cooking with Us Already?</p>
+    <div class="login-msg">
+        <a routerLink="/login" class="golden">Log in</a><p class="prompt-msg">and Keep the Recipes Rolling!</p> 
+    </div>
+</div>

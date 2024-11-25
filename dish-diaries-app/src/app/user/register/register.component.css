@@ -1,0 +1,104 @@
+.register-container {
+    width: 65%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: calc(50% + 51px - 20px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.prompt-msg,
+a {
+    font-family: "Dancing Script", cursive;
+    color: #F7E4C4;
+    font-size: 1.7rem;
+    text-align: center;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+}
+
+.register {
+    margin-bottom: 20px;
+}
+
+.login-msg {
+    display: flex;
+    gap: 10px;
+}
+
+a.golden {
+    color: #FFD400;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+a.golden:hover {
+    transform: scale(1.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    gap: 10px;
+}
+
+.row-wrapper {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+
+.input-wrapper {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+form input,
+#cooking-level {
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid #FFD400;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    color: #F7E4C4;
+    font-family: "Poiret One", sans-serif;
+    font-size: 1.2rem;
+    transition: border 0.5s ease;
+}
+
+form input:focus,
+#cooking-level:focus {
+    border: 1px solid #F7E4C4;
+    border-radius: 0;
+    outline: none;
+}
+
+form input[type="submit"] {
+    color: #FFD400;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid #FFD400;
+    font-family: "Poiret One", sans-serif;
+    background: rgba(0, 0, 0, 0.9);
+    margin: 20px 0;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+form input[type="submit"]:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+form label {
+    color: #FFD400;
+    font-family: "Poiret One", sans-serif;
+    font-size: 1.5rem;
+}
