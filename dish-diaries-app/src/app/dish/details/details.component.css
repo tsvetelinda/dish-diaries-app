@@ -13,6 +13,8 @@
 .img-container {
     width: 400px;
     height: 500px;
+    border: 1px solid #FFD400;
+    padding: 5px 20px;
 }
 
 .motto {
@@ -26,8 +28,8 @@
 }
 
 .img-container img {
-    width: 360px;
-    height: 460px;
+    width: 340px;
+    height: 440px;
     box-shadow: rgba(0, 0, 0, 0.8) 0px 14px 28px, rgba(0, 0, 0, 0.9) 0px 10px 10px;
 }
 
