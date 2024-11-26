@@ -11,6 +11,14 @@ const dishSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  description: {
+    type: String,
+    required: true,
+  },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
   ingredients: {
     type: [String],
     required: true,
@@ -36,7 +44,7 @@ const dishSchema = new mongoose.Schema({
   },
   cookingSkillLevel: {
     type: String,
-    enum: ['Beginner', 'Sous Chef', 'Grill Master', 'Executive Chef'],
+    enum: ['Freshly Baked', 'Cooking Up', 'Stirring Magic', 'Chef in Training'],
     required: true,
   },
 }, {
