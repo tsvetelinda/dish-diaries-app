@@ -1,0 +1,87 @@
+.list-container {
+    width: 85%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: calc(50% + 51px - 20px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.prompt-msg {
+    font-family: "Dancing Script", cursive;
+    color: #F7E4C4;
+    font-size: 2rem;
+    text-align: center;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+    margin-bottom: 10px;
+}
+
+.dishes-container {
+    width: 90%;
+    display: flex;
+}
+
+.dish-card {
+    border: 1px solid #FFD400;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dish-card h3 { 
+    color: #FFD400;
+    font-family: "Poiret One", sans-serif;
+    font-size: 1.9rem;
+    font-weight: 300;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+}
+
+.dish-img {
+    width: 280px;
+    height: 330px;
+    margin-bottom: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.dish-img img {
+    width: 280px;
+    height: 330px;
+}
+
+.dish-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.row-details {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    font-family: "Poiret One", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+}
+
+.icon {
+    display: flex;
+    align-items: flex-end;
+}
+
+.category {
+    color: #FFD400;
+    width: 40%;
+}
+
+.information {
+    color: #F7E4C4;
+}
+
