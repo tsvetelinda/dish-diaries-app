@@ -1,0 +1,185 @@
+.details-container {
+    width: 85%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    position: absolute;
+    top: calc(50% + 51px - 20px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 30px;
+}
+
+.img-container {
+    width: 400px;
+    height: 500px;
+}
+
+.motto {
+    width: 100%;
+    text-align: center;
+    font-family: "Dancing Script", cursive;
+    color: #F7E4C4;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+    margin-bottom: 5px;
+}
+
+.img-container img {
+    width: 360px;
+    height: 460px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 14px 28px, rgba(0, 0, 0, 0.9) 0px 10px 10px;
+}
+
+.info-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.title-container {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.title-container .title {
+    width: 50%;
+    color: #FFD400;
+    font-family: "Poiret One", sans-serif;
+    font-size: 2.3rem;
+    font-weight: 300;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+}
+
+.title-container .chef-container {
+    width: 50%;
+    display: flex;
+    justify-content: right;
+}
+
+.chef-container .chef-name {
+    font-family: "Dancing Script", cursive;
+    color: #F7E4C4;
+    font-size: 1.7rem;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+}
+
+.chef-container .icon {
+    display: flex;
+    align-items: flex-end;
+}
+
+.info-container .description {
+    font-family: "Dancing Script", cursive;
+    color: #F7E4C4;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+}
+
+.tabs-container {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+
+.tab-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid #FFD400;
+    padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.9) 0px 19px 38px, rgba(0, 0, 0, 0.9) 0px 15px 12px;
+}
+
+.tab-container p {
+    color: #FFD400;
+    font-family: "Poiret One", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+}
+
+.steps-container {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+
+.ingredients-container {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+
+.instructions-container {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ingredients-container h3,
+.instructions-container h3 {
+    color: #FFD400;
+    font-family: "Poiret One", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+}
+
+.ingredients-container .ingredients-list,
+.instructions-container .instructions-list {
+    color: #F7E4C4;
+    font-family: "Poiret One", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+}
+
+.ingredients-container .ingredients-list {
+    list-style: none;
+}
+
+.instructions-container .instructions-list {
+    padding-left: 25px;
+}
+
+.ingredients-list li::before {
+    content: "\2713";
+    color: #FFD400;
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+.tried-it-btn {
+    width: 90%;
+    color: #FFD400;
+    font-size: 1.9rem;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid #FFD400;
+    font-family: "Poiret One", sans-serif;
+    background: rgba(0, 0, 0, 0.9);
+    margin: 20px 0;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.buttons .icon {
+    margin-left: 10px;
+}
+
+.tried-it-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tried-it-btn:focus {
+    outline: none;
+}
