@@ -134,6 +134,11 @@
     text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
 }
 
+.ingredients-container span,
+.instructions-container span {
+    margin-right: 10px;
+}
+
 .ingredients-container .ingredients-list,
 .instructions-container .instructions-list {
     color: #F7E4C4;

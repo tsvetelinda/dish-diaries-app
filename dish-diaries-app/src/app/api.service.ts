@@ -15,4 +15,11 @@ export class ApiService {
 
     return this.http.get<Dish[]>(url);
   }
+
+  getSingleDish(dishId: string) {
+    const { apiUrl } = environment;
+    let url = `${apiUrl}/dishes/${dishId}`;
+
+    return this.http.get<Dish>(url);
+  }
 }
