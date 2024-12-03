@@ -44,7 +44,7 @@ const dishSchema = new mongoose.Schema({
   },
   cookingSkillLevel: {
     type: String,
-    enum: ['Freshly Baked', 'Cooking Up', 'Stirring Magic', 'Chef in Training'],
+    enum: ['Newbie', 'Rising Star', 'Proficient', 'Culinary Wizard'],
     required: true,
   },
 }, {
