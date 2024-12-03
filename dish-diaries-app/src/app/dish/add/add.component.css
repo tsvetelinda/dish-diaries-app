@@ -1,0 +1,189 @@
+.form-container {
+    width: 85%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: calc(50% + 51px - 20px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-container .prompt-msg {
+    font-family: "Dancing Script", cursive;
+    color: #F7E4C4;
+    font-size: 2rem;
+    text-align: center;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 5px;
+}
+
+.row-wrapper {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+
+.input-wrapper {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.skill-wrapper {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+}
+
+.skill-wrapper label {
+    width: 20%;
+}
+
+.skill-wrapper #skill-level {
+    width: 80%;
+    display: flex;
+    gap: 5px;
+    justify-content: left;
+}
+
+#skill-level label {
+    width: 100%;
+}
+
+.label-container {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.label-container label {
+    width: 35%;
+}
+
+form label,
+.disclaimer {
+    color: #FFD400;
+    font-family: "Poiret One", sans-serif;
+    font-size: 1.4rem;
+}
+
+.disclaimer {
+    font-size: 0.9rem;
+    width: 65%;
+    text-align: right;
+}
+
+form input,
+form textarea,
+form #dietary-preference {
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid #FFD400;
+    padding: 8px;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    color: #F7E4C4;
+    font-family: "Poiret One", sans-serif;
+    font-size: 1.2rem;
+    transition: border 0.5s ease;
+}
+
+textarea::-webkit-scrollbar {
+    width: 7px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: #FFD400;
+    border-radius: 10px;
+}
+
+textarea::-webkit-scrollbar-track {
+    background-color: #393636;
+    border-radius: 10px;
+}
+
+form input:focus,
+form textarea:focus {
+    border: 1px solid #F7E4C4;
+    border-radius: 0;
+    outline: none;
+}
+
+form input[type="submit"] {
+    color: #FFD400;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid #FFD400;
+    font-family: "Poiret One", sans-serif;
+    background: rgba(0, 0, 0, 0.9);
+    margin: 20px 0;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+input[type="radio"] {
+    display: none;
+}   
+  
+.custom-radio {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+  
+  .custom-radio .radio-mark {
+    width: 20px;
+    height: 20px;
+    background-color: black; 
+    border: 2px solid #FFD400; 
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+  }
+  
+  input[type="radio"]:checked + .radio-mark {
+    background-color: #FFD400;
+  }
+  
+  .custom-radio .radio-mark::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #000; 
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+  
+
+  input[type="radio"]:checked + .radio-mark::after {
+    display: block;
+    background-color: #000;
+  }
+  
+  .custom-radio .icon {
+    margin-left: 5px;
+  }
+
+form input[type="submit"]:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
