@@ -1,0 +1,23 @@
+.surprise-container {
+    width: 50%;
+    max-height: 600px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: calc(50% + 51px - 20px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.prompt-msg {
+    font-family: "Dancing Script", cursive;
+    width: 70%;
+    color: #F7E4C4;
+    font-size: 1.8rem;
+    text-align: center;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+    margin-bottom: 10px;
+}
