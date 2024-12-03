@@ -4,7 +4,7 @@
         <div class="row-wrapper">
             <div class="input-wrapper">
                 <label for="dish-name">Dish Name</label>
-                <input [class]="isFieldEmpty(inputDishName) || isMinLengthValid(inputDishName) ? 'error-input' : 'standard-input'" type="text" id="dish-name" name="dish-name" placeholder="Spaghetti Carbonara" required ngModel #inputDishName="ngModel" minlength="7">
+                <input [class]="isFieldEmpty(inputDishName) || isMinLengthValid(inputDishName) ? 'error-input' : 'standard-input'" type="text" id="dish-name" name="dish-name" placeholder="Spaghetti Carbonara" required ngModel #inputDishName="ngModel" minlength="7" maxlength="22">
                 @if (isFieldEmpty(inputDishName)) {
                     <p class="error-msg">Make sure to complete all required fields.</p>
                 }
