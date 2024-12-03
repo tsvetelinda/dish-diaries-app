@@ -43,6 +43,7 @@
     width: 100%;
     display: flex;
     gap: 5px;
+    padding: 5px 0px;
 }
 
 .skill-wrapper label {
@@ -71,10 +72,16 @@
 }
 
 form label,
-.disclaimer {
+.disclaimer,
+.error-msg {
     color: #FFD400;
     font-family: "Poiret One", sans-serif;
     font-size: 1.4rem;
+}
+
+.error-msg {
+    color: #DC143C;
+    font-size: 1rem;
 }
 
 .disclaimer {
@@ -87,13 +94,20 @@ form input,
 form textarea,
 form #dietary-preference {
     background-color: rgba(0, 0, 0, 0.9);
-    border: 1px solid #FFD400;
     padding: 8px;
     box-shadow: rgba(0, 0, 0, 0.75) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     color: #F7E4C4;
     font-family: "Poiret One", sans-serif;
     font-size: 1.2rem;
     transition: border 0.5s ease;
+}
+
+.standard-input {
+    border: 1px solid #FFD400;
+}
+
+.error-input {
+    border: 1px solid #DC143C;
 }
 
 textarea::-webkit-scrollbar {
@@ -117,7 +131,7 @@ form textarea:focus {
     outline: none;
 }
 
-form input[type="submit"] {
+form button {
     color: #FFD400;
     font-size: 1.8rem;
     cursor: pointer;
@@ -141,7 +155,7 @@ input[type="radio"] {
     cursor: pointer;
 }
   
-  .custom-radio .radio-mark {
+.custom-radio .radio-mark {
     width: 20px;
     height: 20px;
     background-color: black; 
@@ -149,13 +163,13 @@ input[type="radio"] {
     border-radius: 50%;
     margin-right: 10px;
     position: relative;
-  }
-  
-  input[type="radio"]:checked + .radio-mark {
+}
+
+input[type="radio"]:checked + .radio-mark {
     background-color: #FFD400;
-  }
-  
-  .custom-radio .radio-mark::after {
+}
+
+.custom-radio .radio-mark::after {
     content: '';
     width: 10px;
     height: 10px;
@@ -166,19 +180,19 @@ input[type="radio"] {
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
-  }
-  
+}
 
-  input[type="radio"]:checked + .radio-mark::after {
+
+input[type="radio"]:checked + .radio-mark::after {
     display: block;
     background-color: #000;
-  }
-  
-  .custom-radio .icon {
-    margin-left: 5px;
-  }
+}
 
-form input[type="submit"]:hover {
+.custom-radio .icon {
+    margin-left: 5px;
+}
+
+form button:hover {
     transform: scale(1.1);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }

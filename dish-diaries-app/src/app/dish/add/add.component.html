@@ -1,18 +1,24 @@
 <div class="form-container">
     <p class="prompt-msg">What's cooking? Add your dish and share the flavor!</p>
-    <form>
+    <form #form="ngForm" (ngSubmit)="addDish(form)">
         <div class="row-wrapper">
             <div class="input-wrapper">
                 <label for="dish-name">Dish Name</label>
-                <input type="text" id="dish-name" name="dish-name" placeholder="Spaghetti Carbonara" required>
+                <input [class]="isFieldEmpty(inputDishName) || isMinLengthValid(inputDishName) ? 'error-input' : 'standard-input'" type="text" id="dish-name" name="dish-name" placeholder="Spaghetti Carbonara" required ngModel #inputDishName="ngModel" minlength="7">
+                @if (isFieldEmpty(inputDishName)) {
+                    <p class="error-msg">Make sure to complete all required fields.</p>
+                }
+                @if (isMinLengthValid(inputDishName)) {
+                    <p class="error-msg">Make sure the dish name has at least 7 characters.</p>
+                }
             </div>
             <div class="input-wrapper">
                 <label for="image-url">Image URL</label>
-                <input type="text" id="image-url" name="image-url" required>
+                <input type="text" id="image-url" name="image-url" required ngModel #inputImageUrl="ngModel">
             </div>
             <div class="input-wrapper">
                 <label for="dietary-preference">Dietary Preference</label>
-                <select id="dietary-preference" name="dietary-preference">
+                <select id="dietary-preference" name="dietary-preference" [class]="isFieldEmpty(inputDietaryPreference) ? 'error-input' : 'standard-input'" required ngModel #inputDietaryPreference="ngModel">
                     <option value="vegetarian">Vegetarian</option>
                     <option value="vegan">Vegan</option>
                     <option value="gluten-free">Gluten-Free</option>
@@ -20,39 +26,60 @@
                     <option value="keto">Keto</option>
                     <option value="other">Other</option>
                 </select>
+                @if (isFieldEmpty(inputDietaryPreference)) {
+                    <p class="error-msg">Make sure to complete all required fields.</p>
+                }
             </div>
         </div>
         <div class="row-wrapper">
             <div class="input-wrapper">
                 <label for="description">Description</label>
-        <textarea id="description" name="description" rows="2" placeholder="Share the flavors and story behind this delightful dish!"></textarea>
+        <textarea id="description" name="description" rows="2" [class]="isFieldEmpty(inputDescription) || isMinLengthValid(inputDescription) ? 'error-input' : 'standard-input'" placeholder="Share the flavors and story behind this delightful dish!" required ngModel #inputDescription="ngModel" minlength="10"></textarea>
+        @if (isFieldEmpty(inputDescription)) {
+            <p class="error-msg">Make sure to complete all required fields.</p>
+        }
+        @if (isMinLengthValid(inputDescription)) {
+            <p class="error-msg">Make sure the description has at least 10 characters.</p>
+        }
             </div>
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="ingredients">Ingredients</label>
                     <p class="disclaimer">*Make sure to list each ingredient on a new line.</p>
                 </div>
-        <textarea id="ingredients" name="ingredients" rows="2" placeholder="List your ingredients here..."></textarea>
+        <textarea id="ingredients" name="ingredients" rows="2" [class]="isFieldEmpty(inputIngedients) || isMinLengthValid(inputIngedients) ? 'error-input' : 'standard-input'" placeholder="List your ingredients here..." required ngModel #inputIngedients="ngModel" minlength="10"></textarea>
+        @if (isFieldEmpty(inputIngedients)) {
+            <p class="error-msg">Make sure to complete all required fields.</p>
+        }
+        @if (isMinLengthValid(inputIngedients)) {
+            <p class="error-msg">Make sure the ingredients contain at least 10 characters.</p>
+        }
             </div>
         </div>
         <div class="row-wrapper">
             <div class="input-wrapper">
                 <label for="servings">Number of Servings</label>
-                <input type="number" id="servings" name="servings" placeholder="4" required>
+                <input type="number" id="servings" name="servings" [class]="isFieldEmpty(inputServings) ? 'error-input' : 'standard-input'" placeholder="4" required ngModel #inputServings="ngModel">
+                @if (isFieldEmpty(inputServings)) {
+                    <p class="error-msg">Make sure to complete all required fields.</p>
+                }
             </div>
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="cooking-time">Cooking Time</label>
                     <p class="disclaimer">*Make sure to enter the time in minutes.</p>
                 </div>
-                <input type="number" id="cooking-time" name="cooking-time" placeholder="30" required>
+                <input type="number" id="cooking-time" name="cooking-time" [class]="isFieldEmpty(inputCookingTime) ? 'error-input' : 'standard-input'" placeholder="30" required ngModel #inputCookingTime="ngModel">
+                @if (isFieldEmpty(inputCookingTime)) {
+                    <p class="error-msg">Make sure to complete all required fields.</p>
+                }
             </div>
         </div>
         <div class="skill-wrapper">
             <label for="skill-level">Cooking Skills Level</label>
             <div id="skill-level">
             <label class="custom-radio">
-                <input type="radio" name="skill-level" value="newbie" id="newbie"><span class="radio-mark"></span>Newbie <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                <input type="radio" name="skill-level" value="newbie" id="newbie" required ngModel #inputSkillLevel="ngModel"><span class="radio-mark"></span>Newbie <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="20" height="20" viewBox="0 0 512.000000 512.000000"
                     preserveAspectRatio="xMidYMid meet">
                    
@@ -102,47 +129,42 @@
                    </span>
             </label>
             <label class="custom-radio">
-                <input type="radio" name="skill-level" value="rising-star" id="rising-star"> <span class="radio-mark"></span>Rising Star <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                <input type="radio" name="skill-level" value="rising-star" id="rising-star" required ngModel #inputSkillLevel="ngModel"> <span class="radio-mark"></span>Rising Star <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="22" height="22" viewBox="0 0 512.000000 512.000000"
                     preserveAspectRatio="xMidYMid meet">
                    
                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
                    fill="#FFD400" stroke="none">
-                   <path d="M3864 5104 c-438 -73 -864 -413 -1213 -967 -109 -174 -226 -404 -381
-                   -747 -284 -630 -394 -834 -549 -1016 -33 -39 -77 -83 -98 -97 -21 -15 -338
-                   -327 -704 -694 -529 -529 -672 -679 -693 -720 -36 -72 -56 -155 -56 -232 l0
-                   -64 -68 -71 c-52 -54 -73 -84 -87 -125 -69 -209 147 -425 356 -356 41 14 71
-                   35 125 87 l71 68 64 0 c77 0 160 20 232 56 41 21 191 164 720 693 367 366 679
-                   683 694 704 14 21 58 65 97 98 182 155 386 265 1016 549 343 155 573 272 747
-                   381 688 434 1044 987 972 1516 -80 595 -664 1035 -1245 937z m326 -155 c53
-                   -10 180 -47 180 -54 0 -1 -39 -15 -87 -30 -251 -77 -537 -278 -858 -600 -324
-                   -325 -511 -563 -960 -1220 -321 -470 -524 -734 -679 -884 -38 -37 -47 -42 -60
-                   -31 -14 11 -7 22 55 84 189 189 301 382 559 956 171 381 243 532 324 679 159
-                   289 306 491 491 677 161 161 275 247 430 324 215 107 396 136 605 99z m413
-                   -218 c17 -17 -2714 -2747 -2739 -2737 -15 6 -7 17 47 74 207 213 333 378 704
-                   922 115 168 248 360 297 427 536 740 1083 1227 1483 1318 68 16 191 13 208 -4z
-                   m140 -162 c5 -19 7 -61 3 -94 -29 -314 -333 -736 -856 -1191 -224 -194 -434
-                   -350 -900 -669 -544 -371 -709 -497 -922 -704 -57 -54 -68 -62 -74 -47 -5 14
-                   277 302 1357 1382 750 750 1368 1363 1374 1361 5 -2 13 -19 18 -38z m193 -317
-                   c38 -145 35 -315 -6 -472 -28 -105 -127 -298 -207 -405 -92 -124 -305 -334
-                   -443 -436 -278 -207 -483 -318 -1110 -599 -574 -258 -767 -370 -956 -559 -62
-                   -62 -73 -69 -84 -55 -11 13 -6 22 31 60 150 155 414 358 884 679 657 449 895
-                   636 1220 960 324 322 523 607 601 860 l28 89 13 -32 c8 -19 20 -59 29 -90z
-                   m-3498 -3260 c-332 -332 -621 -614 -643 -627 -77 -45 -200 -49 -279 -8 -43 22
-                   -124 102 -151 148 -45 78 -49 198 -8 280 8 16 290 306 626 643 l612 612 222
-                   -222 223 -223 -602 -603z m-1119 -673 c50 -50 91 -92 91 -95 0 -2 -19 -17 -42
-                   -34 -30 -22 -52 -30 -85 -30 -37 0 -49 6 -83 40 -34 34 -40 46 -40 83 0 33 8
-                   55 30 85 17 23 32 42 34 42 3 0 45 -41 95 -91z"/>
-                   <path d="M1462 1457 l-52 -53 55 -54 55 -54 50 49 c27 27 50 54 50 60 0 10
-                   -91 105 -101 105 -2 0 -28 -24 -57 -53z"/>
-                   <path d="M1017 1012 l-297 -297 55 -55 55 -55 298 298 297 297 -55 55 -55 55
-                   -298 -298z"/>
+                   <path d="M4512 5099 c-28 -14 -114 -95 -250 -236 -175 -181 -207 -220 -210
+                   -248 -4 -41 28 -75 72 -75 26 0 61 31 248 217 l218 218 160 -160 c88 -88 159
+                   -163 158 -167 -6 -17 -881 -898 -891 -898 -7 0 -84 72 -172 160 l-159 160 142
+                   143 c155 157 165 175 117 222 -48 49 -66 39 -227 -122 -160 -160 -184 -198
+                   -173 -265 7 -37 4 -42 -43 -92 -48 -50 -82 -103 -82 -126 0 -6 -60 -77 -134
+                   -158 -621 -678 -1072 -1423 -1324 -2187 -36 -110 -67 -201 -68 -203 0 -1 -22
+                   9 -47 24 -110 61 -315 113 -531 135 -178 18 -558 7 -711 -20 -230 -41 -403
+                   -111 -496 -200 l-52 -50 6 -114 c34 -596 367 -965 937 -1042 416 -57 817 58
+                   1048 298 70 74 79 107 39 145 -39 37 -76 29 -132 -29 -214 -219 -576 -320
+                   -950 -264 -226 34 -386 107 -523 239 -104 99 -170 207 -215 351 -25 83 -52
+                   213 -45 220 2 2 42 -11 88 -30 47 -19 118 -42 158 -52 71 -16 73 -16 100 4 35
+                   26 42 81 13 107 -11 10 -57 29 -103 42 -87 24 -180 62 -212 87 -18 13 -16 16
+                   45 45 91 43 207 77 334 99 157 26 621 26 777 0 141 -24 235 -50 326 -92 89
+                   -42 87 -48 -24 -95 -176 -73 -363 -102 -683 -104 -231 -2 -234 -3 -252 -25
+                   -27 -33 -24 -73 7 -102 26 -24 26 -24 247 -23 277 1 443 21 632 76 99 28 222
+                   91 278 140 48 43 48 44 98 216 188 658 550 1335 1043 1951 114 143 277 330
+                   343 393 l39 38 57 -58 57 -58 -91 -99 c-289 -315 -591 -724 -799 -1085 -170
+                   -295 -344 -687 -444 -998 -38 -119 -49 -169 -62 -295 -17 -164 -24 -207 -55
+                   -307 -16 -51 -17 -70 -9 -91 11 -26 46 -49 75 -49 62 0 110 146 139 431 16
+                   156 51 278 151 535 248 634 660 1275 1155 1801 70 74 92 91 124 97 30 6 56 23
+                   105 71 l66 63 51 -5 c38 -4 60 0 90 15 23 12 227 210 495 479 494 495 488 488
+                   474 581 -7 44 -17 57 -188 231 -100 101 -196 190 -214 197 -46 20 -91 17 -141
+                   -7z m-722 -1434 c-24 -25 -49 -45 -54 -45 -16 0 -166 153 -166 169 0 9 19 35
+                   42 58 l43 43 90 -90 90 -90 -45 -45z"/>
                    </g>
-                   </svg>
+                   </svg>                   
                    </span>
             </label>
             <label class="custom-radio">
-                <input type="radio" name="skill-level" value="proficient" id="proficient"> <span class="radio-mark"></span>Proficient <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                <input type="radio" name="skill-level" value="proficient" id="proficient" required ngModel #inputSkillLevel="ngModel"> <span class="radio-mark"></span>Proficient <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="20" height="20" viewBox="0 0 512.000000 512.000000"
                     preserveAspectRatio="xMidYMid meet">
                    
@@ -178,7 +200,7 @@
                    </span>
             </label>
             <label class="custom-radio">
-                <input type="radio" name="skill-level" value="culinary-wizard" id="culinary-wizard"><span class="radio-mark"></span> Culinary Wizard  <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                <input type="radio" name="skill-level" value="culinary-wizard" id="culinary-wizard" required ngModel #inputSkillLevel="ngModel"><span class="radio-mark"></span> Culinary Wizard  <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="20" height="20" viewBox="0 0 512.000000 512.000000"
                     preserveAspectRatio="xMidYMid meet">
                    
@@ -219,7 +241,16 @@
             <label for="instructions">Instructions</label>
             <p class="disclaimer">*Make sure to write each instruction on a new line.</p>
         </div>
-        <textarea id="instructions" name="instructions" rows="2" cols="40" placeholder="Describe the steps for preparing this delicious recipe here..."></textarea>
-        <input type="submit" value="Add Dish">
+        <textarea id="instructions" name="instructions" [class]="isFieldEmpty(inputInstructions) || isMinLengthValid(inputIngedients) ? 'error-input' : 'standard-input'" rows="2" cols="40" placeholder="Describe the steps for preparing this delicious recipe here..." required ngModel #inputInstructions="ngModel" minlength="10"></textarea>
+        @if (isFieldEmpty(inputInstructions)) {
+            <p class="error-msg">Make sure to complete all required fields.</p>
+        }
+        @if (isMinLengthValid(inputInstructions)) {
+            <p class="error-msg">Make sure the instructions contain at least 10 characters.</p>
+        }
+        @if (form.submitted && form.invalid) {
+            <p class="error-msg">Make sure to complete all required fields.</p>
+        }
+        <button>Add Dish</button>
     </form>
 </div>
