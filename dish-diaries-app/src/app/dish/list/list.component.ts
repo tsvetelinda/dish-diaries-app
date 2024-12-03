@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { Dish } from '../../types/dish';
-import { RouterLink } from '@angular/router';
+import { SingleCardComponent } from '../single-card/single-card.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [RouterLink],
-  templateUrl: './list.component.html',
+  imports: [SingleCardComponent],
+  templateUrl: './list.component.html', 
   styleUrl: './list.component.css'
-})
+}) 
 export class ListComponent implements OnInit {
   dishes: Dish[] = [];
 
