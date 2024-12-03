@@ -1,5 +1,4 @@
-
-.dish-card {
+.dish-card { 
     border: 1px solid #FFD400;
     padding: 10px 20px;
     display: flex;
@@ -13,6 +12,7 @@
 .dish-card h3 { 
     color: #FFD400;
     font-family: "Poiret One", sans-serif;
+    text-transform: capitalize;
     font-size: 1.9rem;
     font-weight: 300;
     margin-bottom: 5px;
