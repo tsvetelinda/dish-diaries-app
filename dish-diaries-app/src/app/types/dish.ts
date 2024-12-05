@@ -5,12 +5,12 @@ export interface Dish {
     "description": string;
     "imageUrl": string;
     "ingredients": string[];
-        "instructions": string[];
-        "dietaryPreferences": string[];
-        "cookingTime": number;
-        "numberOfServings": number;
-        "cookingSkillLevel": string;
-        "createdAt": string;
-        "updatedAt": string;
-        "__v": number;
+    "instructions": string[];
+    "dietaryPreferences": string[];
+    "cookingTime": number;
+    "numberOfServings": number;
+    "cookingSkillLevel": string;
+    "createdAt": string;
+    "updatedAt": string;
+    "__v": number;
 }
