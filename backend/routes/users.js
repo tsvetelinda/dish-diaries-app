@@ -1,9 +1,9 @@
-import { AUTH_COOKIE_NAME } from '../constants.js';
-import User from '../models/User.js';
-import bcrypt from 'bcrypt';
-import jwt from '../lib/jwt.js';
-
 const express = require('express');
+const { AUTH_COOKIE_NAME } = require('../constants.js');
+const User = require('../models/User.js');
+const bcrypt = require('bcrypt');
+const jwt = require('../lib/jwt.js');
+
 const router = express.Router();
 
 router.post('/register', async (req, res) => {
@@ -82,4 +82,4 @@ function generateToken(user) {
     return jwt.sign(payload, process.env.JWT_SECRET, options);
 }
 
-export default router;
+module.exports = router;

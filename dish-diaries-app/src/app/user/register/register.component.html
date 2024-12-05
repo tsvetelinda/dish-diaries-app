@@ -1,10 +1,10 @@
 <div class="register-container">
     <p class="prompt-msg register">Let's Turn Up the Heat!<br>Step into our kitchen and stir up some amazing flavors with us!</p>
-    <form>
+    <form #form="ngForm" (ngSubmit)="register(form)">
         <div class="row-wrapper">
             <div class="input-wrapper">
-                <label for="chef-name">Chef Name</label>
-                <input type="text" id="chef-name" name="chef-name" required ngModel #inputChefName="ngModel">
+                <label for="chefName">Chef Name</label>
+                <input type="text" id="chefName" name="chefName" required ngModel #inputChefName="ngModel">
             </div>
             <div class="input-wrapper">
                 <label for="email">Email</label>
@@ -17,22 +17,22 @@
                 <input type="password" id="password" name="password" required ngModel #inputPassword="ngModel">
             </div>
             <div class="input-wrapper">
-                <label for="re-password">Repeat Password</label>
-                <input type="password" id="re-password" name="re-password" required ngModel #inputRePassword="ngModel">
+                <label for="rePassword">Repeat Password</label>
+                <input type="password" id="rePassword" name="rePassword" required ngModel #inputRePassword="ngModel">
             </div>
         </div>
         <div class="row-wrapper">
             <div class="input-wrapper">
-                <label for="favorite-cuisine">Favorite Cuisine</label>
-                <input type="text" id="favorite-cuisine" name="favorite-cuisine" placeholder="e.g., Italian, Mexican" required ngModel #jnputFavCuisine="ngModel">
+                <label for="favCuisine">Favorite Cuisine</label>
+                <input type="text" id="favCuisine" name="favCuisine" placeholder="e.g., Italian, Mexican" required ngModel #inputFavCuisine="ngModel">
             </div>
             <div class="input-wrapper">
-                <label for="cooking-level">Cooking Skill Level</label>
-                <select id="cooking-level" name="cooking-level" required ngModel #inputCookingSkillLevel="ngModel">
-                    <option value="beginner">Freshly Baked</option>
-                    <option value="intermediate">Cooking Up</option>
-                    <option value="advanced">Stirring Magic</option>
-                    <option value="expert">Chef in Training</option>
+                <label for="cookingSkillLevel">Cooking Skill Level</label>
+                <select id="cookingSkillLevel" name="cookingSkillLevel" required ngModel #inputCookingSkillLevel="ngModel">
+                    <option value="newbie">Newbie</option>
+                    <option value="rising-star">Rising Star</option>
+                    <option value="proficient">Proficient</option>
+                    <option value="culinary-wizard">Culinary Wizard</option>
                 </select>
             </div>
         </div>

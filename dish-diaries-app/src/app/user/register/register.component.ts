@@ -18,10 +18,10 @@ export class RegisterComponent {
       return;
     }
 
-    const {email, passGroup: {password} = {}, chefName, favCuisine, cookingSkillLevel } = form.value;
+    const {email, password, chefName, favCuisine, cookingSkillLevel } = form.value;
 
     this.userService.register(email!, password!, chefName!, favCuisine!, cookingSkillLevel!).subscribe(() => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     });
   }
 }

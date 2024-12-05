@@ -1,5 +1,5 @@
-import util from 'util';
-import jsonwebtoken from 'jsonwebtoken';
+const util = require('util');
+const jsonwebtoken = require('jsonwebtoken');
 
 const verify = util.promisify(jsonwebtoken.verify);
 const sign = util.promisify(jsonwebtoken.sign);
@@ -9,4 +9,4 @@ const jwt = {
     sign
 };
 
-export default jwt;
+module.exports = jwt;
