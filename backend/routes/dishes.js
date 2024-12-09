@@ -15,7 +15,6 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const dish = new Dish(req.body);
   try {
-    console.log('Here in backend!');
     const newDish = await dish.save();
     res.json(newDish);
   } catch (err) {

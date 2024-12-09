@@ -7,24 +7,17 @@ import { User } from '../types/user';
   providedIn: 'root'
 })
 export class UserService {
-  private user$$ = new BehaviorSubject<User | undefined>(undefined);
+  private user$$ = new BehaviorSubject<User | null>(null);
   private user$ = this.user$$.asObservable();
 
   USER_KEY = '[user]';
   user: User | null = null;
 
-  get isLogged(): boolean {
-    return !!this.user;
-  }
-
   constructor(private http: HttpClient) {
-    try {
-      const lsUser = localStorage.getItem(this.USER_KEY) || '';
-      this.user = JSON.parse(lsUser);
-    } catch(error) {
-      this.user = null;
-    }
-  }
+    this.user$.subscribe((user) => {
+      this.user = user;
+    });
+   }
 
   login(email: string, password: string) {
     return this.http.post<User>('/api/users/login', { email, password })
@@ -32,13 +25,8 @@ export class UserService {
   }
 
   logout() {
-    return this.http.get('/api/users/logout')
-      .pipe(
-        tap(() => {
-          this.user$$.next(undefined);
-          localStorage.removeItem(this.USER_KEY);
-        })
-      );
+    return this.http.post('/api/users/logout', {})
+    .pipe(tap((user) => this.user$$.next(null)));
   }
 
   register(email: string, password: string, chefName: string, favCuisine: string, cookingSkillLevel: string) {

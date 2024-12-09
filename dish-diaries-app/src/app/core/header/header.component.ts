@@ -13,7 +13,8 @@ export class HeaderComponent {
   constructor(private userService: UserService, private router: Router) { }
 
   logout() {
-    this.userService.logout();
-    this.router.navigate(['/']);
+    this.userService.logout().subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 }

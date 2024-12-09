@@ -26,7 +26,10 @@ export class AddComponent {
       return;
     }
 
+    
+
     const { dishName, imageUrl, dietaryPreferences, description, ingredients, servings, cookingTime, cookingSkillLevel, instructions } = form.value;
+    const chef = null;
 
     this.apiService.addDish(dishName, imageUrl, dietaryPreferences, description, ingredients, servings, cookingTime, cookingSkillLevel, instructions).subscribe(() => {
       this.router.navigate(['/']);

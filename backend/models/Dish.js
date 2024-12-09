@@ -5,7 +5,7 @@ const dishSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  chefName: {
+  chef: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
@@ -37,6 +37,10 @@ const dishSchema = new mongoose.Schema({
     type: String,
     enum: ['Newbie', 'Rising Star', 'Proficient', 'Culinary Wizard'],
   },
+  reactions: [{
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    status: { type: String, enum: ['liked', 'disliked'] }
+  }],
 }, {
   timestamps: true,
 });

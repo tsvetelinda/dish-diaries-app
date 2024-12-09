@@ -1,7 +1,9 @@
+import { User } from "./user";
+
 export interface Dish {
    "_id": string;
     "dishName": string;
-    "chefName": string; // FIX ME once I have the user model
+    "chef": User;
     "description": string;
     "imageUrl": string;
     "ingredients": string[];
@@ -11,6 +13,6 @@ export interface Dish {
     "servings": number;
     "cookingSkillLevel": string;
     "createdAt": string;
-    "updatedAt": string;
+    "updatedAt": string; //Add the reactions!
     "__v": number;
 }
