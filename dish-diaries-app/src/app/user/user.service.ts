@@ -32,13 +32,20 @@ export class UserService {
   }
 
   logout() {
-    this.user = null;
-    localStorage.removeItem(this.USER_KEY);
+    return this.http.get('/api/users/logout')
+      .pipe(
+        tap(() => {
+          this.user$$.next(undefined);
+          localStorage.removeItem(this.USER_KEY);
+        })
+      );
   }
 
   register(email: string, password: string, chefName: string, favCuisine: string, cookingSkillLevel: string) {
     return this.http.post<User>('/api/users/register', { email, password, chefName, favCuisine, cookingSkillLevel})
-    .pipe(tap((user) => this.user$$.next(user)));
+    .pipe(
+      tap((user) => this.user$$.next(user))
+    );
   }
 
   getProfile() {

@@ -68,12 +68,11 @@ router.post('/login', async (req, res, next) => {
     }
 });
 
-/*
-router.get('/logout', isAuth, (req, res) => {
-    res.clearCookie(AUTH_COOKIE_NAME);
 
-    res.redirect('/');
-});*/
+router.get('/logout', (req, res) => {
+    res.clearCookie(AUTH_COOKIE_NAME);
+    res.status(200).json({ message: 'Logout successful' });
+});
 
 function generateToken(user) {
     const payload = { _id: user._id };

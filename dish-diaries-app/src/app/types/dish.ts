@@ -8,7 +8,7 @@ export interface Dish {
     "instructions": string[];
     "dietaryPreferences": string[];
     "cookingTime": number;
-    "numberOfServings": number;
+    "servings": number;
     "cookingSkillLevel": string;
     "createdAt": string;
     "updatedAt": string;

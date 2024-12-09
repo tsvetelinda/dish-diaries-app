@@ -3,8 +3,8 @@
     <form #form="ngForm" (ngSubmit)="addDish(form)">
         <div class="row-wrapper">
             <div class="input-wrapper">
-                <label for="dish-name">Dish Name</label>
-                <input [class]="isFieldEmpty(inputDishName) || isMinLengthValid(inputDishName) ? 'error-input' : 'standard-input'" type="text" id="dish-name" name="dish-name" placeholder="Spaghetti Carbonara" required ngModel #inputDishName="ngModel" minlength="7" maxlength="22">
+                <label for="dishName">Dish Name</label>
+                <input [class]="isFieldEmpty(inputDishName) || isMinLengthValid(inputDishName) ? 'error-input' : 'standard-input'" type="text" id="dishName" name="dishName" placeholder="Spaghetti Carbonara" required ngModel #inputDishName="ngModel" minlength="7" maxlength="22">
                 @if (isFieldEmpty(inputDishName)) {
                     <p class="error-msg">Make sure to complete all required fields.</p>
                 }
@@ -13,20 +13,20 @@
                 }
             </div>
             <div class="input-wrapper">
-                <label for="image-url">Image URL</label>
-                <input type="text" id="image-url" name="image-url" required ngModel #inputImageUrl="ngModel">
+                <label for="imageUrl">Image URL</label>
+                <input type="text" id="imageUrl" name="imageUrl" required ngModel #inputImageUrl="ngModel">
             </div>
             <div class="input-wrapper">
-                <label for="dietary-preference">Dietary Preference</label>
-                <select id="dietary-preference" name="dietary-preference" [class]="isFieldEmpty(inputDietaryPreference) ? 'error-input' : 'standard-input'" required ngModel #inputDietaryPreference="ngModel">
-                    <option value="vegetarian">Vegetarian</option>
-                    <option value="vegan">Vegan</option>
-                    <option value="gluten-free">Gluten-Free</option>
-                    <option value="non-vegetarian">Non-Vegetarian</option>
-                    <option value="keto">Keto</option>
-                    <option value="other">Other</option>
+                <label for="dietaryPreferences">Dietary Preference</label>
+                <select id="dietaryPreferences" name="dietaryPreferences" [class]="isFieldEmpty(inputDietaryPreferences) ? 'error-input' : 'standard-input'" required ngModel #inputDietaryPreferences="ngModel">
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Vegan">Vegan</option>
+                    <option value="Gluten-Free">Gluten-Free</option>
+                    <option value="Non-Vegetarian">Non-Vegetarian</option>
+                    <option value="Keto">Keto</option>
+                    <option value="Other">Other</option>
                 </select>
-                @if (isFieldEmpty(inputDietaryPreference)) {
+                @if (isFieldEmpty(inputDietaryPreferences)) {
                     <p class="error-msg">Make sure to complete all required fields.</p>
                 }
             </div>
@@ -66,20 +66,20 @@
             </div>
             <div class="input-wrapper">
                 <div class="label-container">
-                    <label for="cooking-time">Cooking Time</label>
+                    <label for="cookingTime">Cooking Time</label>
                     <p class="disclaimer">*Make sure to enter the time in minutes.</p>
                 </div>
-                <input type="number" id="cooking-time" name="cooking-time" [class]="isFieldEmpty(inputCookingTime) ? 'error-input' : 'standard-input'" placeholder="30" required ngModel #inputCookingTime="ngModel">
+                <input type="number" id="cookingTime" name="cookingTime" [class]="isFieldEmpty(inputCookingTime) ? 'error-input' : 'standard-input'" placeholder="30" required ngModel #inputCookingTime="ngModel">
                 @if (isFieldEmpty(inputCookingTime)) {
                     <p class="error-msg">Make sure to complete all required fields.</p>
                 }
             </div>
         </div>
         <div class="skill-wrapper">
-            <label for="skill-level">Cooking Skills Level</label>
-            <div id="skill-level">
+            <label for="cookingSkillLevel">Cooking Skills Level</label>
+            <div id="cookingSkillLevel">
             <label class="custom-radio">
-                <input type="radio" name="skill-level" value="newbie" id="newbie" required ngModel #inputSkillLevel="ngModel"><span class="radio-mark"></span>Newbie <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                <input type="radio" name="cookingSkillLevel" value="Newbie" id="newbie" required ngModel #inputcookingSkillLevel="ngModel"><span class="radio-mark"></span>Newbie <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="20" height="20" viewBox="0 0 512.000000 512.000000"
                     preserveAspectRatio="xMidYMid meet">
                    
@@ -129,7 +129,7 @@
                    </span>
             </label>
             <label class="custom-radio">
-                <input type="radio" name="skill-level" value="rising-star" id="rising-star" required ngModel #inputSkillLevel="ngModel"> <span class="radio-mark"></span>Rising Star <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                <input type="radio" name="cookingSkillLevel" value="Rising Star" id="risingStar" required ngModel #inputcookingSkillLevel="ngModel"> <span class="radio-mark"></span>Rising Star <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="22" height="22" viewBox="0 0 512.000000 512.000000"
                     preserveAspectRatio="xMidYMid meet">
                    
@@ -164,7 +164,7 @@
                    </span>
             </label>
             <label class="custom-radio">
-                <input type="radio" name="skill-level" value="proficient" id="proficient" required ngModel #inputSkillLevel="ngModel"> <span class="radio-mark"></span>Proficient <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                <input type="radio" name="cookingSkillLevel" value="Proficient" id="proficient" required ngModel #inputcookingSkillLevel="ngModel"> <span class="radio-mark"></span>Proficient <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="20" height="20" viewBox="0 0 512.000000 512.000000"
                     preserveAspectRatio="xMidYMid meet">
                    
@@ -200,7 +200,7 @@
                    </span>
             </label>
             <label class="custom-radio">
-                <input type="radio" name="skill-level" value="culinary-wizard" id="culinary-wizard" required ngModel #inputSkillLevel="ngModel"><span class="radio-mark"></span> Culinary Wizard  <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                <input type="radio" name="cookingSkillLevel" value="Culinary Wizard" id="culinaryWizard" required ngModel #inputcookingSkillLevel="ngModel"><span class="radio-mark"></span> Culinary Wizard  <span class="icon"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="20" height="20" viewBox="0 0 512.000000 512.000000"
                     preserveAspectRatio="xMidYMid meet">
                    

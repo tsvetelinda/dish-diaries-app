@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { ApiService } from '../../api.service';
 
 @Component({
   selector: 'app-add',
@@ -9,6 +11,8 @@ import { FormsModule, NgForm, NgModel } from '@angular/forms';
   styleUrl: './add.component.css'
 })
 export class AddComponent {
+  constructor(private apiService: ApiService, private router: Router) { }
+
   isFieldEmpty(controlName: NgModel) {
     return controlName?.touched && controlName?.errors?.['required'];
   }
@@ -21,6 +25,11 @@ export class AddComponent {
     if (form.invalid) {
       return;
     }
-    console.log(form);
+
+    const { dishName, imageUrl, dietaryPreferences, description, ingredients, servings, cookingTime, cookingSkillLevel, instructions } = form.value;
+
+    this.apiService.addDish(dishName, imageUrl, dietaryPreferences, description, ingredients, servings, cookingTime, cookingSkillLevel, instructions).subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 }

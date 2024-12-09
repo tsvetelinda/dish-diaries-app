@@ -19,4 +19,25 @@ export class ApiService {
 
     return this.http.get<Dish>(url);
   }
+
+  addDish(dishName: string, imageUrl: string, dietaryPreferences: string, description: string, 
+    ingredients: string, servings: number, cookingTime: number, cookingSkillLevel: string, instructions: string
+  ) {
+    let url = `/api/dishes`;
+    
+    const ingredientsArr = ingredients.split('\n');
+    const instructionsArr = instructions.split('\n');
+
+    console.log(dishName);
+    console.log(imageUrl);
+    console.log(dietaryPreferences);
+    console.log(description);
+    console.log(ingredientsArr);
+    console.log(servings);
+    console.log(cookingTime);
+    console.log(cookingSkillLevel);
+    console.log(instructionsArr);
+
+    return this.http.post<Dish>(url, {dishName, imageUrl, dietaryPreferences, description, ingredients: ingredientsArr, servings, cookingTime, cookingSkillLevel, instructions: instructionsArr});
+  }
 }

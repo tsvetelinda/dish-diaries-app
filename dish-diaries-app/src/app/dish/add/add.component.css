@@ -50,14 +50,14 @@
     width: 20%;
 }
 
-.skill-wrapper #skill-level {
+.skill-wrapper #cookingSkillLevel {
     width: 80%;
     display: flex;
     gap: 5px;
     justify-content: left;
 }
 
-#skill-level label {
+#cookingSkillLevel label {
     width: 100%;
 }
 
