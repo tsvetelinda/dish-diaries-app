@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../api.service';
+import { UserService } from '../../user/user.service';
 
 @Component({
   selector: 'app-add',
@@ -11,7 +12,7 @@ import { ApiService } from '../../api.service';
   styleUrl: './add.component.css'
 })
 export class AddComponent {
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router, private userService: UserService) { }
 
   isFieldEmpty(controlName: NgModel) {
     return controlName?.touched && controlName?.errors?.['required'];
@@ -27,10 +28,15 @@ export class AddComponent {
     }
 
     const { dishName, imageUrl, dietaryPreferences, description, ingredients, servings, cookingTime, cookingSkillLevel, instructions } = form.value;
-    const chef = null;  // TODO: Add the owner of the recipe here + set the reactions to 0!
+    let chef: string;
 
-    this.apiService.addDish(dishName, imageUrl, dietaryPreferences, description, ingredients, servings, cookingTime, cookingSkillLevel, instructions).subscribe(() => {
-      this.router.navigate(['/']);
+    this.userService.getProfile().subscribe(currentUser => {
+      chef = currentUser._id;
+
+      this.apiService.addDish(dishName, chef, description, imageUrl, ingredients, instructions, dietaryPreferences, cookingTime, servings, cookingSkillLevel)
+          .subscribe(() => {
+            this.router.navigate(['/']);
+          });
     });
   }
 }
