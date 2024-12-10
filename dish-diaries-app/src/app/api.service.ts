@@ -43,4 +43,13 @@ export class ApiService {
 
     return this.http.delete<Dish>(url);
   }
+
+  triedDish(dishId: string | undefined, userId: string | undefined, status: 'liked' | 'disliked') {
+    const url = `/api/dishes/${dishId}`;
+    const reactions = { user: userId, status };
+
+    console.log('here');
+  
+    return this.http.put<Dish>(url, { reactions });
+  }
 }

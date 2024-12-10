@@ -16,6 +16,7 @@ export class DetailsComponent implements OnInit {
   dish: Dish | null = null;
   errMsg: string | null = null;
   showEdit: boolean = false;
+  showReactions: boolean = false;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private userService: UserService, private router: Router) { }
 
@@ -32,7 +33,15 @@ export class DetailsComponent implements OnInit {
   }
 
   get isOwner(): boolean {
-    return this.dish?.chef._id === this.userService.getUserId();
+    const userId = this.userService.getUserId();
+    return this.dish?.chef?._id === userId;
+  }
+
+  get hasTried(): string | undefined {
+    const userId = this.userService.getUserId();
+    const reaction = this.dish?.reactions.find(r => r.user.toString() == userId);
+
+    return reaction?.status; 
   }
 
   remove() {
@@ -49,4 +58,36 @@ export class DetailsComponent implements OnInit {
   edit() {
     this.showEdit = !this.showEdit;
   }
+
+  triedIt() {
+    this.showReactions = !this.showReactions;
+  }
+
+  likedIt() {
+    const dishId = this.dish?._id;
+    const userId = this.userService.getUserId();
+
+    this.apiService.triedDish(dishId, userId, 'liked').subscribe({
+      next: () => {
+        this.router.navigate(['/list']);
+      },
+      error: (err) => {
+        this.errMsg = err.error.message;
+      }
+    });
+  }
+
+  dislikedIt() {
+    const dishId = this.dish?._id;
+    const userId = this.userService.getUserId();
+
+    this.apiService.triedDish(dishId, userId, 'disliked').subscribe({
+      next: () => {
+        this.router.navigate(['/list']);
+      },
+      error: (err) => {
+        this.errMsg = err.error.message;
+      }
+    });
+  }  
 }

@@ -1,5 +1,10 @@
 import { User } from "./user";
 
+export interface Reaction {
+    user: User;
+    status: 'liked' | 'disliked';
+}
+
 export interface Dish {
    "_id": string;
     "dishName": string;
@@ -12,7 +17,8 @@ export interface Dish {
     "cookingTime": number;
     "servings": number;
     "cookingSkillLevel": string;
+    "reactions": Reaction[];
     "createdAt": string;
-    "updatedAt": string; //Add the reactions!
+    "updatedAt": string;
     "__v": number;
 }
