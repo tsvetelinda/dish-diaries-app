@@ -1,27 +1,48 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
+import { EmailDirective } from '../../directives/email.directive';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, EmailDirective],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  errMsg: string | null = null;
+
   constructor(private userService: UserService, private router: Router) { }
+
+  isFieldEmpty(controlName: NgModel) {
+    return controlName?.touched && controlName?.errors?.['required'];
+  }
+
+  isMinLengthValid(controlName: NgModel) {
+    return controlName?.touched && controlName?.errors?.['minlength'];
+  }
+
+  doPasswordsMatch(password: NgModel, rePassword: NgModel) {
+    return password?.control?.value === rePassword?.control?.value;
+  }
 
   register(form: NgForm) {
     if (form.invalid) {
       return;
     }
 
-    const {email, password, chefName, favCuisine, cookingSkillLevel } = form.value;
+    const { email, password, chefName, favCuisine, cookingSkillLevel } = form.value;
 
-    this.userService.register(email!, password!, chefName!, favCuisine!, cookingSkillLevel!).subscribe(() => {
-      this.router.navigate(['/']);
+    this.userService.register(email, password, chefName, favCuisine, cookingSkillLevel).subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        this.errMsg = err.error.message;
+        form.reset();
+      }
     });
   }
 }

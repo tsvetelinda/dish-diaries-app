@@ -4,39 +4,75 @@
         <div class="row-wrapper">
             <div class="input-wrapper">
                 <label for="chefName">Chef Name</label>
-                <input type="text" id="chefName" name="chefName" required ngModel #inputChefName="ngModel">
+                <input type="text" id="chefName" name="chefName" [class]="isFieldEmpty(inputChefName) || isMinLengthValid(inputChefName) ? 'error-input' : 'standard-input'" required ngModel #inputChefName="ngModel" minlength="3" maxlength="15">
+                @if (isFieldEmpty(inputChefName)) {
+                    <p class="error-msg">Make sure to complete all required fields.</p>
+                }
+                @if (isMinLengthValid(inputChefName)) {
+                    <p class="error-msg">Make sure the chef name has at least 3 characters.</p>
+                }
             </div>
             <div class="input-wrapper">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required ngModel #inputEmail="ngModel">
+                <input id="email" name="email" [class]="isFieldEmpty(inputEmail) || (inputEmail?.touched && inputEmail?.errors?.['emailValidator']) ? 'error-input' : 'standard-input'" appEmail required ngModel #inputEmail="ngModel">
+                @if (isFieldEmpty(inputEmail)) {
+                    <p class="error-msg">Make sure to complete all required fields.</p>
+                }
+                @if (inputEmail?.touched && inputEmail?.errors?.['emailValidator']) {
+                    <p class="error-msg">Email is not valid!</p>
+                }
             </div>
         </div>
         <div class="row-wrapper">
             <div class="input-wrapper">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required ngModel #inputPassword="ngModel">
+                <input type="password" id="password" name="password" [class]="isFieldEmpty(inputPassword) || isMinLengthValid(inputPassword) || (inputRePassword.touched && !doPasswordsMatch(inputPassword, inputRePassword)) ? 'error-input' : 'standard-input'" required ngModel #inputPassword="ngModel" minlength="6">
+                @if (isFieldEmpty(inputPassword)) {
+                    <p class="error-msg">Make sure to complete all required fields.</p>
+                }
+                @if (isMinLengthValid(inputPassword)) {
+                    <p class="error-msg">Make sure that the password is at least 6 characters.</p>
+                }
             </div>
             <div class="input-wrapper">
                 <label for="rePassword">Repeat Password</label>
-                <input type="password" id="rePassword" name="rePassword" required ngModel #inputRePassword="ngModel">
+                <input type="password" id="rePassword" name="rePassword" [class]="isFieldEmpty(inputRePassword) || (inputRePassword.touched && !doPasswordsMatch(inputPassword, inputRePassword)) ? 'error-input' : 'standard-input'" required ngModel #inputRePassword="ngModel">
+                @if (isFieldEmpty(inputRePassword)) {
+                    <p class="error-msg">Make sure to complete all required fields.</p>
+                }
+                @if (inputRePassword.touched && !doPasswordsMatch(inputPassword, inputRePassword)) {
+                    <p class="error-msg">Make sure the passwords are matching.</p>
+                }
             </div>
         </div>
         <div class="row-wrapper">
             <div class="input-wrapper">
                 <label for="favCuisine">Favorite Cuisine</label>
-                <input type="text" id="favCuisine" name="favCuisine" placeholder="e.g., Italian, Mexican" required ngModel #inputFavCuisine="ngModel">
+                <input type="text" id="favCuisine" name="favCuisine" [class]="isFieldEmpty(inputFavCuisine) || isMinLengthValid(inputFavCuisine) ? 'error-input' : 'standard-input'" placeholder="e.g., Italian, Mexican" required ngModel #inputFavCuisine="ngModel" minlength="5">
+                @if (isFieldEmpty(inputFavCuisine)) {
+                    <p class="error-msg">Make sure to complete all required fields.</p>
+                }
+                @if (isMinLengthValid(inputFavCuisine)) {
+                    <p class="error-msg">Make sure the cuisine name has at least 5 characters.</p>
+                }
             </div>
             <div class="input-wrapper">
                 <label for="cookingSkillLevel">Cooking Skill Level</label>
-                <select id="cookingSkillLevel" name="cookingSkillLevel" required ngModel #inputCookingSkillLevel="ngModel">
-                    <option value="newbie">Newbie</option>
-                    <option value="rising-star">Rising Star</option>
-                    <option value="proficient">Proficient</option>
-                    <option value="culinary-wizard">Culinary Wizard</option>
+                <select id="cookingSkillLevel" name="cookingSkillLevel" [class]="isFieldEmpty(inputCookingSkillLevel) ? 'error-input' : 'standard-input'" required ngModel #inputCookingSkillLevel="ngModel">
+                    <option value="Newbie">Newbie</option>
+                    <option value="Rising Star">Rising Star</option>
+                    <option value="Proficient">Proficient</option>
+                    <option value="Culinary Wizard">Culinary Wizard</option>
                 </select>
+                @if (isFieldEmpty(inputCookingSkillLevel)) {
+                    <p class="error-msg">Make sure to complete all required fields.</p>
+                }
             </div>
         </div>
-        <input type="submit" value="Register">
+        @if (form.submitted && errMsg) {
+            <p class="error-msg centered">{{errMsg}}</p>
+        }
+        <button>Register</button>
     </form>
     <p class="prompt-msg">Been Cooking with Us Already?</p>
     <div class="login-msg">

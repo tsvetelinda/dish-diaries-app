@@ -2,10 +2,19 @@
     <p class="prompt-msg login">Let's get cookin'!<br>Sign in to whip up something delicious.</p>
     <form #form="ngForm" (ngSubmit)="login(form)">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required ngModel #inputEmail="ngModel">
+        <input type="email" id="email" name="email" [class]="isFieldEmpty(inputEmail) || errMsg ? 'error-input' : 'standard-input'" required ngModel #inputEmail="ngModel">
+        @if (isFieldEmpty(inputEmail)) {
+            <p class="error-msg">Make sure to fill in your email.</p>
+        }
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" required ngModel #inputPassword="ngModel">
-        <input type="submit" value="Log in">
+        <input type="password" id="password" name="password" [class]="isFieldEmpty(inputPassword) || errMsg ? 'error-input' : 'standard-input'" required ngModel #inputPassword="ngModel">
+        @if (isFieldEmpty(inputPassword)) {
+            <p class="error-msg">Make sure to fill in your password.</p>
+        }
+        @if (errMsg) {
+            <p class="error-msg">{{errMsg}}</p>
+        }
+        <button>Log in</button>
     </form>
     <p class="prompt-msg register">Not a member yet? Time to spice things up!</p>
     <a routerLink="/register" class="golden">Register here!</a>

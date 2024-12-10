@@ -13,6 +13,10 @@ export class UserService {
   USER_KEY = '[user]';
   user: User | null = null;
 
+  get isLogged(): boolean {
+    return !!this.user;
+  }
+
   constructor(private http: HttpClient) {
     this.user$.subscribe((user) => {
       this.user = user;

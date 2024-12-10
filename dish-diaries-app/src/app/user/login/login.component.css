@@ -46,7 +46,6 @@ form {
 
 form input {
     background-color: rgba(0, 0, 0, 0.9);
-    border: 1px solid #FFD400;
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.75) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     color: #F7E4C4;
@@ -61,7 +60,7 @@ form input:focus {
     outline: none;
 }
 
-form input[type="submit"] {
+form button {
     color: #FFD400;
     font-size: 1.8rem;
     cursor: pointer;
@@ -75,7 +74,7 @@ form input[type="submit"] {
     box-shadow: rgba(0, 0, 0, 0.75) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
-form input[type="submit"]:hover {
+form button:hover {
     transform: scale(1.1);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
@@ -84,4 +83,18 @@ form label {
     color: #FFD400;
     font-family: "Poiret One", sans-serif;
     font-size: 1.5rem;
+}
+
+.standard-input {
+    border: 1px solid #FFD400;
+}
+
+.error-input {
+    border: 1px solid #DC143C;
+}
+
+.error-msg {
+    color: #DC143C;
+    font-size: 1rem;
+    font-family: "Poiret One", sans-serif;
 }
