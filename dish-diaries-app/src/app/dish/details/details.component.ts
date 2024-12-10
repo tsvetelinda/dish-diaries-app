@@ -68,8 +68,9 @@ export class DetailsComponent implements OnInit {
     const userId = this.userService.getUserId();
 
     this.apiService.triedDish(dishId, userId, 'liked').subscribe({
-      next: () => {
-        this.router.navigate(['/list']);
+      next: (updatedDish) => {
+        this.dish = updatedDish;
+        this.showReactions = false;
       },
       error: (err) => {
         this.errMsg = err.error.message;
@@ -82,8 +83,9 @@ export class DetailsComponent implements OnInit {
     const userId = this.userService.getUserId();
 
     this.apiService.triedDish(dishId, userId, 'disliked').subscribe({
-      next: () => {
-        this.router.navigate(['/list']);
+      next: (updatedDish) => {
+        this.dish = updatedDish;
+        this.showReactions = false;
       },
       error: (err) => {
         this.errMsg = err.error.message;

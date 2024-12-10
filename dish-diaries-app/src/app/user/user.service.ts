@@ -40,6 +40,10 @@ export class UserService {
     );
   }
 
+  editProfile(userId: string | undefined, email: string, favCuisine: string, cookingSkillLevel: string) {
+    return this.http.put<User>(`/api/users/${userId}`, { email, favCuisine, cookingSkillLevel });
+  }
+
   getProfile() {
     return this.http.get<User>('/api/users/profile')
     .pipe(tap((user) => this.user$$.next(user)));

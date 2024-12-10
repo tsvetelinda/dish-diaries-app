@@ -1,0 +1,18 @@
+<div class="tried-container">
+    <div class="liked-container">
+        <p class="prompt-msg">Recipes you've enjoyed and savored!</p>
+        <div class="dish-container">
+            @for (item of liked; track $index) {
+                <app-single-card [dish]="item"/>
+            }
+        </div>
+    </div>
+    <div class="disliked-container">
+        <p class="prompt-msg">Dishes that didn't quite hit the mark!</p>
+        <div class="dish-container">
+            @for (item of disliked; track $index) {
+                <app-single-card [dish]="item"/>
+            }
+        </div>
+    </div>
+</div>

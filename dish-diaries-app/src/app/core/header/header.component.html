@@ -8,7 +8,7 @@
         <li routerLink="/surprise">Surprise Dish</li>
         @if (isLoggedIn) {
             <li routerLink="/add">Add a Dish</li>
-            <li>Tried it!</li>
+            <li routerLink="/tried">Tried it!</li>
             <li (click)="logout()">Logout</li>
         }
     </ul>

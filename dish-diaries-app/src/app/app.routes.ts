@@ -6,6 +6,7 @@ import { ListComponent } from './dish/list/list.component';
 import { DetailsComponent } from './dish/details/details.component';
 import { AddComponent } from './dish/add/add.component';
 import { SurpriseComponent } from './dish/surprise/surprise.component';
+import { TriedComponent } from './dish/tried/tried.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -14,5 +15,6 @@ export const routes: Routes = [
     {path: 'list', component: ListComponent},
     {path: 'list/:id', component: DetailsComponent},
     {path: 'add', component: AddComponent},
-    {path: 'surprise', component: SurpriseComponent}
+    {path: 'surprise', component: SurpriseComponent},
+    {path: 'tried', component: TriedComponent}
 ];
