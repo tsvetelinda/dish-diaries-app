@@ -12,7 +12,7 @@ import { UserService } from '../../user/user.service';
   styleUrl: './details.component.css'
 })
 export class DetailsComponent implements OnInit {
-  dish = {} as Dish;
+  dish: Dish | null = null;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private userService: UserService) { }
 
@@ -25,6 +25,11 @@ export class DetailsComponent implements OnInit {
 
     this.apiService.getSingleDish(id).subscribe(dish => {
       this.dish = dish;
+      console.log(this.dish.instructions);
     });
+  }
+
+  get isOwner(): boolean {
+    return this.dish?.chef._id === this.userService.getUserId();
   }
 }

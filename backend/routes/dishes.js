@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const dish = await Dish.findById(req.params.id);
+    const dish = await Dish.findById(req.params.id).populate('chef', 'chefName');
     if (!dish) {
       return res.status(404).json({ message: 'Dish not found' });
     }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, map, tap } from 'rxjs';
 import { User } from '../types/user';
 
 @Injectable({
@@ -43,5 +43,9 @@ export class UserService {
   getProfile() {
     return this.http.get<User>('/api/users/profile')
     .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  getUserId() {
+    return this.user$$.value?._id;
   }
 }
