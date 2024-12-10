@@ -1,5 +1,5 @@
 @if (showEdit) {
-    <app-edit [dish]="dish"/>
+    <app-edit [dish]="dish" (formSubmitted)="onFormSubmitted($event)" />
 } @else {
     <div class="details-container">
         <div class="img-container">

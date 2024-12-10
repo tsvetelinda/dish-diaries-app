@@ -4,6 +4,7 @@ import { ApiService } from '../../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../user/user.service';
 import { EditComponent } from '../edit/edit.component';
+import { EditDishResult } from '../../types/edit-dish-result';
 
 @Component({
   selector: 'app-details',
@@ -57,6 +58,11 @@ export class DetailsComponent implements OnInit {
 
   edit() {
     this.showEdit = !this.showEdit;
+  }
+
+  onFormSubmitted(event: EditDishResult) {
+    this.showEdit = event.showEdit;
+    this.dish = event.updatedDish; 
   }
 
   triedIt() {
