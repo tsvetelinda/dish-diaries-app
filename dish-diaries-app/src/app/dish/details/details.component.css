@@ -163,7 +163,14 @@
     margin-right: 10px;
 }
 
-.tried-it-btn {
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.tried-it-btn,
+.edit-btn,
+.remove-btn {
     width: 90%;
     color: #FFD400;
     font-size: 1.9rem;
@@ -178,15 +185,41 @@
     box-shadow: rgba(0, 0, 0, 0.75) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
+.edit-btn,
+.remove-btn {
+    width: 40%;
+    color: #FFD400;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid #FFD400;
+    font-family: "Poiret One", sans-serif;
+    background: rgba(0, 0, 0, 0.9);
+    margin: 10px 0;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
 .buttons .icon {
     margin-left: 10px;
 }
 
-.tried-it-btn:hover {
+.tried-it-btn:hover,
+.edit-btn:hover,
+.remove-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-.tried-it-btn:focus {
+.tried-it-btn:focus,
+.edit-btn:hover,
+.remove-btn:hover {
     outline: none;
+}
+
+.error-msg {
+    color: #DC143C;
+    font-size: 1rem;
+    font-family: "Poiret One", sans-serif;
 }

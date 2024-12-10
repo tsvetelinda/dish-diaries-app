@@ -28,4 +28,19 @@ export class ApiService {
 
     return this.http.post<Dish>(url, { dishName, chef, description, imageUrl, ingredients: ingredientsArr, instructions: instructionsArr, dietaryPreferences, cookingTime, servings, cookingSkillLevel });
   }
+
+  editDish(dishId: string | undefined, dishName: string, chef: string, description: string, imageUrl: string, ingredients: string, instructions: string, dietaryPreferences: string, cookingTime: number, servings: number, cookingSkillLevel: string) {
+    let url = `/api/dishes/${dishId}`;
+    
+    const ingredientsArr = ingredients.split('\n');
+    const instructionsArr = instructions.split('\n');
+
+    return this.http.put<Dish>(url, { dishName, chef, description, imageUrl, ingredients: ingredientsArr, instructions: instructionsArr, dietaryPreferences, cookingTime, servings, cookingSkillLevel });
+  }
+
+  removeDish(dishId: string | undefined) {
+    let url = `/api/dishes/${dishId}`;
+
+    return this.http.delete<Dish>(url);
+  }
 }
