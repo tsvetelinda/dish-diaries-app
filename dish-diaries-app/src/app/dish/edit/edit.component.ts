@@ -4,12 +4,13 @@ import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { ApiService } from '../../api.service';
 import { EditDishResult } from '../../types/edit-dish-result';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ImageDirective } from '../../directives/image.directive';
 
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [FormsModule],
-  templateUrl: './edit.component.html',
+  imports: [FormsModule, ImageDirective],
+  templateUrl: './edit.component.html', 
   styleUrl: './edit.component.css',
   animations: [
     trigger('fadeInOut', [

@@ -7,14 +7,20 @@
                 <input [class]="isFieldEmpty(inputDishName) || isMinLengthValid(inputDishName) ? 'error-input' : 'standard-input'" type="text" id="dishName" name="dishName" placeholder="Spaghetti Carbonara" required [ngModel]="dish?.dishName" #inputDishName="ngModel" minlength="7" maxlength="22">
                 @if (isFieldEmpty(inputDishName)) {
                     <p class="error-msg">Make sure to complete all required fields.</p>
-                }
+                } 
                 @if (isMinLengthValid(inputDishName)) {
                     <p class="error-msg">Make sure the dish name has at least 7 characters.</p>
                 }
             </div>
             <div class="input-wrapper">
                 <label for="imageUrl">Image URL</label>
-                <input type="text" id="imageUrl" name="imageUrl" required [ngModel]="dish?.imageUrl" #inputImageUrl="ngModel">
+                <input type="text" id="imageUrl" name="imageUrl" [class]="isFieldEmpty(inputImageUrl) || (inputImageUrl?.touched && inputImageUrl?.errors?.['imageValidator']) ? 'error-input' : 'standard-input'" required [ngModel]="dish?.imageUrl" appImage #inputImageUrl="ngModel">
+                @if (isFieldEmpty(inputImageUrl)) {
+                    <p class="error-msg">Make sure to complete all required fields.</p>
+                }
+                @if (inputImageUrl?.touched && inputImageUrl?.errors?.['imageValidator']) {
+                    <p class="error-msg">Invalid URL. Ensure it's a proper link starting with http:// or https://</p>
+                }
             </div>
             <div class="input-wrapper">
                 <label for="dietaryPreferences">Dietary Preference</label>
