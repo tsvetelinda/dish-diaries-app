@@ -8,17 +8,19 @@ import { AddComponent } from './dish/add/add.component';
 import { SurpriseComponent } from './dish/surprise/surprise.component';
 import { TriedComponent } from './dish/tried/tried.component';
 import { ErrorComponent } from './error/error.component';
+import { AuthGuard } from './guards/auth.guard';
+import { GuestGuard } from './guards/guest.guard';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full' },
     {path: 'home', component: HomeComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent},
+    {path: 'login', component: LoginComponent, canActivate: [GuestGuard]},
+    {path: 'register', component: RegisterComponent, canActivate: [GuestGuard]},
     {path: 'list', component: ListComponent},
     {path: 'list/:id', component: DetailsComponent},
-    {path: 'add', component: AddComponent},
+    {path: 'add', component: AddComponent, canActivate: [AuthGuard]},
     {path: 'surprise', component: SurpriseComponent},
-    {path: 'tried', component: TriedComponent},
+    {path: 'tried', component: TriedComponent, canActivate: [AuthGuard]},
     {path: '404', component: ErrorComponent},
     {path: '**', redirectTo: '/404', pathMatch: 'full'},
 ];
