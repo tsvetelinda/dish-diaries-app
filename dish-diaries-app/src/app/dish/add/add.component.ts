@@ -3,11 +3,12 @@ import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { UserService } from '../../user/user.service';
+import { ImageDirective } from '../../directives/image.directive';
 
 @Component({
   selector: 'app-add',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ImageDirective],
   templateUrl: './add.component.html',
   styleUrl: './add.component.css'
 })
@@ -20,6 +21,10 @@ export class AddComponent {
 
   isMinLengthValid(controlName: NgModel) {
     return controlName?.touched && controlName?.errors?.['minlength'];
+  }
+
+  isLessThanZero(controlName: NgModel) {
+    return controlName?.touched && controlName?.value <= 0;
   }
 
   addDish(form: NgForm) {
