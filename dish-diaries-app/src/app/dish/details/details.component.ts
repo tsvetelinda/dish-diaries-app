@@ -18,6 +18,8 @@ export class DetailsComponent implements OnInit {
   errMsg: string | null = null;
   showEdit: boolean = false;
   showReactions: boolean = false;
+  likes: number = 0;
+  dislikes: number = 0;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private userService: UserService, private router: Router) { }
 
@@ -30,6 +32,8 @@ export class DetailsComponent implements OnInit {
 
     this.apiService.getSingleDish(id).subscribe(dish => {
       this.dish = dish;
+      this.likes = this.dish.reactions.filter(r => r.status === 'liked').length;
+      this.dislikes = this.dish.reactions.filter(r => r.status === 'disliked').length;
     });
   }
 

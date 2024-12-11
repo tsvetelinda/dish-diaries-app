@@ -4,20 +4,65 @@
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.8);
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     position: absolute;
     top: calc(50% + 51px - 20px);
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+.information {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
 .prompt-msg {
     font-family: "Dancing Script", cursive;
-    width: 70%;
+    width: 90%;
     color: #F7E4C4;
-    font-size: 1.8rem;
+    font-size: 2rem;
     text-align: center;
     text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
     margin-bottom: 10px;
+    text-align: center;
+}
+
+.reactions {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    justify-content: center;
+}
+
+.likes,
+.dislikes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.icon-container {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 50%;
+    border: 2px solid #FFD400;
+    background-color: #000;
+    box-shadow: rgba(0, 0, 0, 0.9) 0px 14px 28px, rgba(0, 0, 0, 0.8) 0px 10px 10px;
+}
+
+.value {
+    color: #FFD400;
+    font-family: "Poiret One", sans-serif;
+    font-size: 2.3rem;
+    font-weight: 300;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.8);
+    text-align: center;
 }
