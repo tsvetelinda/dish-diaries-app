@@ -21,3 +21,12 @@
 .golden {
     color: #FFD400;
 }
+
+.link {
+    transition: transform 0.3s ease;
+    margin-left: 5px;
+}
+
+a.link:hover {
+    transform: scale(1.1);
+}
