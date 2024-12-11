@@ -4,10 +4,21 @@
 The project combines a front-end built with Angular and a back-end powered by Node.js and Express, utilizing MongoDB for data storage.
 
 ## Features
-* Create and share recipes.
-* Browse and rate recipes from other users.
-* Generate random recipes for inspiration.
-* User-friendly design for seamless interactions.
+### Static
+* **Home Page** – Welcome page with general site information and navigation.
+* **Login Page** – Secure user login for personalized access.
+* **Register Page** – User registration for new account creation.
+* **Create Dish Page** – Submit new recipes, including detailed dish information.
+* **Error Page** – A page displayed for any navigation or loading issues.
+### Dynamic
+* **Catalog Page** – Dynamically renders a list of dishes pulled from the database for browsing.
+* **Details Page** – Displays detailed cooking information and user interaction (like/dislike) for the selected dish.
+* **Tried It! Page** – Displays dishes the user has tried, divided into two sections: liked and disliked.
+* **Surprise Dish Page** – Presents a random dish each time the page is accessed for inspiration.
+* **My Profile** – Shows user’s data along with all dishes they have created.
+* **Edit Dish Details Page** – Allows users to edit the details of a dish they have created, pre-populated with existing data.
+* **Edit Profile Page** – Lets users update their profile details with pre-filled data.
+* **Search** – Allows users to search for dishes by three criteria: dietary preferences, cooking skill level, and a third custom criterion.
 
 ## Prerequisites
 * Installed Node.js
