@@ -7,14 +7,18 @@ import { DetailsComponent } from './dish/details/details.component';
 import { AddComponent } from './dish/add/add.component';
 import { SurpriseComponent } from './dish/surprise/surprise.component';
 import { TriedComponent } from './dish/tried/tried.component';
+import { ErrorComponent } from './error/error.component';
 
 export const routes: Routes = [
-    {path: '', component: HomeComponent},
+    {path: '', redirectTo: '/home', pathMatch: 'full' },
+    {path: 'home', component: HomeComponent},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'list', component: ListComponent},
     {path: 'list/:id', component: DetailsComponent},
     {path: 'add', component: AddComponent},
     {path: 'surprise', component: SurpriseComponent},
-    {path: 'tried', component: TriedComponent}
+    {path: 'tried', component: TriedComponent},
+    {path: '404', component: ErrorComponent},
+    {path: '**', redirectTo: '/404', pathMatch: 'full'},
 ];
