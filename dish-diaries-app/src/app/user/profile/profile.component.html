@@ -272,6 +272,7 @@
     }
     <div class="user-recipes">
         @if (dishes && dishes.length > 0) {
+            <p class="prompt-msg">From your kitchen to the world: here are the recipes you've proudly shared!</p>
             @for (item of dishes; track $index) {
                 <app-single-card [dish]="item"/>
             }
