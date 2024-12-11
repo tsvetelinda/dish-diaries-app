@@ -10,6 +10,7 @@ import { TriedComponent } from './dish/tried/tried.component';
 import { ErrorComponent } from './error/error.component';
 import { AuthGuard } from './guards/auth.guard';
 import { GuestGuard } from './guards/guest.guard';
+import { SearchComponent } from './dish/search/search.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,6 +22,7 @@ export const routes: Routes = [
     {path: 'add', component: AddComponent, canActivate: [AuthGuard]},
     {path: 'surprise', component: SurpriseComponent},
     {path: 'tried', component: TriedComponent, canActivate: [AuthGuard]},
+    {path: 'search', component: SearchComponent},
     {path: '404', component: ErrorComponent},
     {path: '**', redirectTo: '/404', pathMatch: 'full'},
 ];

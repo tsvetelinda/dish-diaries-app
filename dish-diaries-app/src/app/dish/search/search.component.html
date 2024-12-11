@@ -1,0 +1,33 @@
+<div class="search-container">
+    <p class="prompt-msg">Dish it out! Select preferences to cook up your perfect match—or leave blank for a buffet of options!</p>
+    <form #form="ngForm" (ngSubmit)="search(form)">
+        <label for="dietaryPreferences">Dietary Preference</label>
+        <select id="dietaryPreferences" name="dietaryPreferences" required ngModel #inputDietaryPreferences="ngModel">
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Vegan">Vegan</option>
+            <option value="Gluten-Free">Gluten-Free</option>
+            <option value="Non-Vegetarian">Non-Vegetarian</option>
+            <option value="Keto">Keto</option>
+            <option value="Other">Other</option>
+        </select>
+        <label for="cookingSkillLevel">Cooking Skill Level</label>
+        <select id="cookingSkillLevel" name="cookingSkillLevel" required ngModel #inputCookingSkillLevel="ngModel">
+            <option value="Newbie">Newbie</option>
+            <option value="Rising Star">Rising Star</option>
+            <option value="Proficient">Proficient</option>
+            <option value="Culinary Wizard">Culinary Wizard</option>
+        </select>
+        <label for="cookingTime">Max Cooking Time</label>
+        <input type="number" id="cookingTime" name="cookingTime" placeholder="30" required ngModel #inputCookingTime="ngModel">
+        <button>Search</button>
+    </form>
+    <div class="results">
+        @if (dishes && dishes.length > 0) {
+            @for (item of dishes; track $index) {
+                <app-single-card [dish]="item"/>
+            }
+        } @else if (form.submitted && dishes.length === 0) {
+            <p class="prompt-msg">Sorry, we couldn't whip up any dishes with those ingredients—try mixing it up!</p>
+        }
+    </div>
+</div>
