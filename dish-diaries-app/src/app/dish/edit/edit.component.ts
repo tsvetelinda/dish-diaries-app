@@ -3,13 +3,26 @@ import { Dish } from '../../types/dish';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { ApiService } from '../../api.service';
 import { EditDishResult } from '../../types/edit-dish-result';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-edit',
   standalone: true,
   imports: [FormsModule],
   templateUrl: './edit.component.html',
-  styleUrl: './edit.component.css'
+  styleUrl: './edit.component.css',
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({ opacity: 1 })),
+      transition('void => *', [
+        style({ opacity: 0 }), 
+        animate('900ms 500ms', style({ opacity: 1 }))
+      ]),
+      transition('* => void', [
+        animate('900ms', style({ opacity: 0 }))
+      ]),
+    ]),
+  ]
 })
 export class EditComponent {
   @Input() dish: Dish | null = null;

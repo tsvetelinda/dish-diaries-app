@@ -1,4 +1,4 @@
-<div class="profile-container">
+<div class="profile-container" @fadeInOut>
     @if (showEditForm) {
         <div class="form-card">
             <form #form="ngForm" (ngSubmit)="editProfile(form)">

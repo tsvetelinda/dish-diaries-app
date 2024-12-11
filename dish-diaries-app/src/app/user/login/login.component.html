@@ -1,4 +1,4 @@
-<div class="login-container">
+<div class="login-container" @fadeInOut>
     <p class="prompt-msg login">Let's get cookin'!<br>Sign in to whip up something delicious.</p>
     <form #form="ngForm" (ngSubmit)="login(form)">
         <label for="email">Email</label>

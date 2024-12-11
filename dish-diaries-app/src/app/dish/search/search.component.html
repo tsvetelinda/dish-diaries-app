@@ -1,4 +1,4 @@
-<div class="search-container">
+<div class="search-container" @fadeInOut>
     <p class="prompt-msg">Dish it out! Select preferences to cook up your perfect match—or leave blank for a buffet of options!</p>
     <form #form="ngForm" (ngSubmit)="search(form)">
         <label for="dietaryPreferences">Dietary Preference</label>

@@ -3,13 +3,26 @@ import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
 import { EmailDirective } from '../../directives/email.directive';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [RouterLink, FormsModule, EmailDirective],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.css',
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({ opacity: 1 })),
+      transition('void => *', [
+        style({ opacity: 0 }), 
+        animate('900ms 500ms', style({ opacity: 1 }))
+      ]),
+      transition('* => void', [
+        animate('900ms', style({ opacity: 0 }))
+      ]),
+    ]),
+  ]
 })
 export class RegisterComponent {
   errMsg: string | null = null;

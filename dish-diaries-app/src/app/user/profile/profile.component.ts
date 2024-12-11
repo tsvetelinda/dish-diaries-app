@@ -7,13 +7,26 @@ import { SingleCardComponent } from '../../dish/single-card/single-card.componen
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { EmailDirective } from '../../directives/email.directive';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
   imports: [SingleCardComponent, RouterLink, FormsModule, EmailDirective],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrl: './profile.component.css',
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({ opacity: 1 })),
+      transition('void => *', [
+        style({ opacity: 0 }), 
+        animate('900ms 500ms', style({ opacity: 1 }))
+      ]),
+      transition('* => void', [
+        animate('900ms', style({ opacity: 0 }))
+      ]),
+    ]),
+  ]
 })
 export class ProfileComponent implements OnInit {
   user: User | null = null;

@@ -2,13 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { SingleCardComponent } from '../single-card/single-card.component';
 import { Dish } from '../../types/dish';
 import { ApiService } from '../../api.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-surprise',
   standalone: true,
   imports: [SingleCardComponent],
   templateUrl: './surprise.component.html',
-  styleUrl: './surprise.component.css'
+  styleUrl: './surprise.component.css',
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({ opacity: 1 })),
+      transition('void => *', [
+        style({ opacity: 0 }), 
+        animate('900ms 500ms', style({ opacity: 1 }))
+      ]),
+      transition('* => void', [
+        animate('900ms', style({ opacity: 0 }))
+      ]),
+    ]),
+  ]
 })
 export class SurpriseComponent implements OnInit {
   randomDish : Dish | undefined = undefined;

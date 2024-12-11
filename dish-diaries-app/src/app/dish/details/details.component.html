@@ -1,7 +1,7 @@
 @if (showEdit) {
     <app-edit [dish]="dish" (formSubmitted)="onFormSubmitted($event)" />
 } @else {
-    <div class="details-container">
+    <div class="details-container" @fadeInOut>
         <div class="img-container">
             <p class="motto">Flavors Worth Remembering</p>
             <img src="{{dish?.imageUrl}}" alt="{{dish?.dishName}}">

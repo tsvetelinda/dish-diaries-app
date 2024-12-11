@@ -4,13 +4,26 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { UserService } from '../../user/user.service';
 import { ImageDirective } from '../../directives/image.directive';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-add',
   standalone: true,
   imports: [FormsModule, ImageDirective],
   templateUrl: './add.component.html',
-  styleUrl: './add.component.css'
+  styleUrl: './add.component.css',
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({ opacity: 1 })),
+      transition('void => *', [
+        style({ opacity: 0 }), 
+        animate('900ms 500ms', style({ opacity: 1 }))
+      ]),
+      transition('* => void', [
+        animate('900ms', style({ opacity: 0 }))
+      ]),
+    ]),
+  ]
 })
 export class AddComponent {
   constructor(private apiService: ApiService, private router: Router, private userService: UserService) { }

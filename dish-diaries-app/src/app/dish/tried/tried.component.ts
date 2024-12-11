@@ -4,13 +4,26 @@ import { ApiService } from '../../api.service';
 import { SingleCardComponent } from '../single-card/single-card.component';
 import { UserService } from '../../user/user.service';
 import { User } from '../../types/user';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-tried',
   standalone: true,
   imports: [SingleCardComponent],
   templateUrl: './tried.component.html',
-  styleUrl: './tried.component.css'
+  styleUrl: './tried.component.css',
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({ opacity: 1 })),
+      transition('void => *', [
+        style({ opacity: 0 }), 
+        animate('900ms 500ms', style({ opacity: 1 }))
+      ]),
+      transition('* => void', [
+        animate('900ms', style({ opacity: 0 }))
+      ]),
+    ]),
+  ]
 })
 export class TriedComponent implements OnInit {
   user: User | null = null;

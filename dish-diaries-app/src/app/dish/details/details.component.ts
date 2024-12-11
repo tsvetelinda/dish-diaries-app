@@ -6,13 +6,26 @@ import { UserService } from '../../user/user.service';
 import { EditComponent } from '../edit/edit.component';
 import { EditDishResult } from '../../types/edit-dish-result';
 import { DatePipe } from '@angular/common';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-details',
   standalone: true, 
   imports: [EditComponent, DatePipe],
   templateUrl: './details.component.html',
-  styleUrl: './details.component.css'
+  styleUrl: './details.component.css',
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({ opacity: 1 })),
+      transition('void => *', [
+        style({ opacity: 0 }), 
+        animate('900ms 500ms', style({ opacity: 1 }))
+      ]),
+      transition('* => void', [
+        animate('900ms', style({ opacity: 0 }))
+      ]),
+    ]),
+  ]
 })
 export class DetailsComponent implements OnInit {
   dish: Dish | null = null;
