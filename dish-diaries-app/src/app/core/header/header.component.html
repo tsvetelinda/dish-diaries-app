@@ -11,6 +11,11 @@
             <li routerLink="/add">Add a Dish</li>
             <li routerLink="/tried">Tried it!</li>
             <li (click)="logout()">Logout</li>
+        } @else {
+            @if (isNotHomePage && isNotLoginPage && isNotRegisterPage) {
+                <li routerLink="/login">Login</li>
+                <li routerLink="/register">Register</li>
+            }
         }
     </ul>
 </nav>

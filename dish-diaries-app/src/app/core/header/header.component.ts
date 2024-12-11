@@ -16,6 +16,18 @@ export class HeaderComponent {
     return this.userService.isLogged;
   }
 
+  get isNotHomePage(): boolean {
+    return this.router.url !== '/home';
+  }
+
+  get isNotLoginPage(): boolean {
+    return this.router.url !== '/login';
+  }
+
+  get isNotRegisterPage(): boolean {
+    return this.router.url !== '/register';
+  }
+
   logout() {
     this.userService.logout().subscribe(() => {
       this.router.navigate(['/']);
