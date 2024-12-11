@@ -5,11 +5,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../user/user.service';
 import { EditComponent } from '../edit/edit.component';
 import { EditDishResult } from '../../types/edit-dish-result';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-details',
   standalone: true, 
-  imports: [EditComponent],
+  imports: [EditComponent, DatePipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
