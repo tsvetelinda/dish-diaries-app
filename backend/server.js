@@ -10,19 +10,13 @@ dotenv.config();
 connectDB();
 
 const app = express();
-
-const corsOptions = {
-    origin: 'http://localhost:4200',
-    credentials: true,
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-app.use('/dishes', dishRoutes);     /* the edit is here*/
+app.use('/dishes', dishRoutes);
 app.use('/users', userRoutes);
 
 const PORT = process.env.PORT || 5000;
