@@ -63,7 +63,16 @@ router.post('/login', async (req, res, next) => {
             maxAge: 2 * 60 * 60 * 1000,
         });
 
-        return res.status(200).json({ message: 'Login successful!' });
+        return res.status(200).json({
+            message: 'Login successful!',
+            user: {
+                _id: user._id,
+                email: user.email,
+                chefName: user.chefName,
+                favCuisine: user.favCuisine,
+                cookingSkillLevel: user.cookingSkillLevel,
+            },
+        });
     } catch (err) {
         next(err);
     }
