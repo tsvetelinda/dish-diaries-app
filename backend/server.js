@@ -10,7 +10,13 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+    origin: 'https://tsvetelinda.github.io', 
+    credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 const cookieParser = require('cookie-parser');
