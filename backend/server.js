@@ -22,8 +22,8 @@ app.use(bodyParser.json());
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-app.use('/api/dishes', dishRoutes);
-app.use('/api/users', userRoutes);
+app.use('/dishes', dishRoutes);     /* the edit is here*/
+app.use('/users', userRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
