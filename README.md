@@ -1,4 +1,6 @@
 # Dish Diaries
+**Disclaimer:** Please note that when visiting [this URL](https://tsvetelinda.github.io/dish-diaries-app/home), it may take up to a minute for all resources to fully load.
+
 **Dish Diaries** is a recipe-sharing web application built as the final assignment for my Angular course at SoftUni. It enables users to share their favorite recipes, rate recipes shared by others, and even get surprise recipe recommendations.
 
 The project combines a front-end built with Angular and a back-end powered by Node.js and Express, utilizing MongoDB for data storage.
