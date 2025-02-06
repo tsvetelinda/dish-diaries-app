@@ -3,7 +3,7 @@ import { Dish } from '../../types/dish';
 import { ApiService } from '../../api.service';
 import { SingleCardComponent } from '../single-card/single-card.component';
 import { UserService } from '../../user/user.service';
-import { User } from '../../types/user';
+import { User, UserForAuth } from '../../types/user';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -26,7 +26,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   ]
 })
 export class TriedComponent implements OnInit {
-  user: User | null = null;
+  user: UserForAuth | null = null;
   dishes: Dish[] = [];
   liked: Dish[] = [];
   disliked: Dish[] = [];

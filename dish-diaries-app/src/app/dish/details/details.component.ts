@@ -7,6 +7,7 @@ import { EditComponent } from '../edit/edit.component';
 import { EditDishResult } from '../../types/edit-dish-result';
 import { DatePipe } from '@angular/common';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { UserForAuth } from '../../types/user';
 
 @Component({
   selector: 'app-details',
@@ -34,6 +35,7 @@ export class DetailsComponent implements OnInit {
   showReactions: boolean = false;
   likes: number = 0;
   dislikes: number = 0;
+  currentUser: UserForAuth | null = null;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private userService: UserService, private router: Router) { }
 
@@ -49,17 +51,18 @@ export class DetailsComponent implements OnInit {
       this.likes = this.dish.reactions.filter(r => r.status === 'liked').length;
       this.dislikes = this.dish.reactions.filter(r => r.status === 'disliked').length;
     });
+
+    this.userService.getProfile().subscribe(user => {
+      this.currentUser = user;
+    })
   }
 
   get isOwner(): boolean {
-    const userId = this.userService.getUserId();
-    return this.dish?.chef?._id === userId;
+    return this.dish?.chef?._id === this.currentUser?._id;
   }
 
   get hasTried(): string | undefined {
-    const userId = this.userService.getUserId();
-    const reaction = this.dish?.reactions.find(r => r.user.toString() == userId);
-
+    const reaction = this.dish?.reactions.find(r => r.user.toString() == this.currentUser?._id);
     return reaction?.status; 
   }
 
@@ -89,9 +92,8 @@ export class DetailsComponent implements OnInit {
 
   likedIt() {
     const dishId = this.dish?._id;
-    const userId = this.userService.getUserId();
 
-    this.apiService.triedDish(dishId, userId, 'liked').subscribe({
+    this.apiService.triedDish(dishId, this.currentUser?._id, 'liked').subscribe({
       next: (updatedDish) => {
         this.dish = updatedDish;
         this.showReactions = false;
@@ -104,9 +106,8 @@ export class DetailsComponent implements OnInit {
 
   dislikedIt() {
     const dishId = this.dish?._id;
-    const userId = this.userService.getUserId();
 
-    this.apiService.triedDish(dishId, userId, 'disliked').subscribe({
+    this.apiService.triedDish(dishId, this.currentUser?._id, 'disliked').subscribe({
       next: (updatedDish) => {
         this.dish = updatedDish;
         this.showReactions = false;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { User } from '../../types/user';
+import { User, UserForAuth } from '../../types/user';
 import { Dish } from '../../types/dish';
 import { ApiService } from '../../api.service';
 import { SingleCardComponent } from '../../dish/single-card/single-card.component';
@@ -29,7 +29,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   ]
 })
 export class ProfileComponent implements OnInit {
-  user: User | null = null;
+  user: UserForAuth | null = null;
   dishes: Dish[] = [];
   showEditForm: boolean = false;
   errMsg: string | null = null;
@@ -75,7 +75,7 @@ export class ProfileComponent implements OnInit {
 
     const { email, favCuisine, cookingSkillLevel } = form.value;
     const userId = this.user?._id;
-
+    /*
     this.userService.editProfile(userId, email, favCuisine, cookingSkillLevel).subscribe({
       next: (updatedUser) => {
         this.user = updatedUser;
@@ -85,6 +85,6 @@ export class ProfileComponent implements OnInit {
         this.errMsg = err.error.message;
         form.reset();
       }
-    });
+    });*/
   }
 }
