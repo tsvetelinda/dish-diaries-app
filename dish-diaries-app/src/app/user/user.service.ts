@@ -23,12 +23,12 @@ export class UserService {
   }
 
   register(email: string, password: string, chefName: string, favCuisine: string, cookingSkillLevel: string) {
-    return this.http.post<UserForAuth>('/api/register', { email, password, chefName, favCuisine, cookingSkillLevel })
+    return this.http.post<UserForAuth>('/api/users/register', { email, password, chefName, favCuisine, cookingSkillLevel })
     .pipe(tap((user) => this.user$$.next(user)));
   }
 
   login(email: string, password: string) {
-    return this.http.post<UserForAuth>('/api/login', { email, password })
+    return this.http.post<UserForAuth>('/api/users/login', { email, password })
     .pipe(tap((user) => this.user$$.next(user)));
   }
 
@@ -38,7 +38,7 @@ export class UserService {
   }
 
   logout() {
-    return this.http.post('/api/logout', {})
+    return this.http.post('/api/users/logout', {})
     .pipe(tap(() => this.user$$.next(null)));
   }
 
