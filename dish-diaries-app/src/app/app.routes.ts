@@ -1,28 +1,52 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './user/login/login.component';
-import { RegisterComponent } from './user/register/register.component';
-import { ListComponent } from './dish/list/list.component';
-import { DetailsComponent } from './dish/details/details.component';
-import { AddComponent } from './dish/add/add.component';
-import { SurpriseComponent } from './dish/surprise/surprise.component';
-import { TriedComponent } from './dish/tried/tried.component';
-import { ErrorComponent } from './error/error.component';
 import { AuthGuard } from './guards/auth.guard';
 import { GuestGuard } from './guards/guest.guard';
-import { SearchComponent } from './dish/search/search.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full' },
-    {path: 'home', component: HomeComponent},
-    {path: 'login', component: LoginComponent, canActivate: [GuestGuard]},
-    {path: 'register', component: RegisterComponent, canActivate: [GuestGuard]},
-    {path: 'list', component: ListComponent},
-    {path: 'list/:id', component: DetailsComponent},
-    {path: 'add', component: AddComponent, canActivate: [AuthGuard]},
-    {path: 'surprise', component: SurpriseComponent},
-    {path: 'tried', component: TriedComponent, canActivate: [AuthGuard]},
-    {path: 'search', component: SearchComponent},
-    {path: '404', component: ErrorComponent},
+    {
+        path: 'home', 
+        loadComponent: () => import('./home/home.component').then((c) => c.HomeComponent)
+    },
+    {
+        path: 'login', 
+        loadComponent: () => import('./user/login/login.component').then((c) => c.LoginComponent),
+        canActivate: [GuestGuard]
+    },
+    {
+        path: 'register',
+        loadComponent: () => import('./user/register/register.component').then((c) => c.RegisterComponent),
+        canActivate: [GuestGuard]
+    },
+    {
+        path: 'list', 
+        loadComponent: () => import('./dish/list/list.component').then((c) => c.ListComponent),
+    },
+    {
+        path: 'list/:id', 
+        loadComponent: () => import('./dish/details/details.component').then((c) => c.DetailsComponent)
+    },
+    {
+        path: 'add', 
+        loadComponent: () => import('./dish/add/add.component').then((c) => c.AddComponent), 
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'surprise', 
+        loadComponent: () => import('./dish/surprise/surprise.component').then((c) => c.SurpriseComponent)
+    },
+    {
+        path: 'tried', 
+        loadComponent: () => import('./dish/tried/tried.component').then((c) => c.TriedComponent), 
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'search', 
+        loadComponent: () => import('./dish/search/search.component').then((c) => c.SearchComponent)
+    },
+    {
+        path: '404', 
+        loadComponent: () => import('./error/error.component').then((c) => c.ErrorComponent)
+    },
     {path: '**', redirectTo: '/404', pathMatch: 'full'},
 ];
