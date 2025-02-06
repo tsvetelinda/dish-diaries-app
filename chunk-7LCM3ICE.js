@@ -1,0 +1,5 @@
+import{a as f}from"./chunk-HGLNSWWQ.js";import{O as a,T as m}from"./chunk-KAITKATV.js";var D=class e{constructor(t){this.http=t}getDishes(){return this.http.get("/api/dishes")}getSingleDish(t){let i=`/api/dishes/${t}`;return this.http.get(i)}addDish(t,i,s,r,n,o,h,p,u,g){let d="/api/dishes",l=n.split(`
+`),c=o.split(`
+`);return this.http.post(d,{dishName:t,chef:i,description:s,imageUrl:r,ingredients:l,instructions:c,dietaryPreferences:h,cookingTime:p,servings:u,cookingSkillLevel:g})}editDish(t,i,s,r,n,o,h,p,u,g,d){let l=`/api/dishes/${t}`,c=o.split(`
+`),b=h.split(`
+`);return this.http.put(l,{dishName:i,chef:s,description:r,imageUrl:n,ingredients:c,instructions:b,dietaryPreferences:p,cookingTime:u,servings:g,cookingSkillLevel:d})}removeDish(t){let i=`/api/dishes/${t}`;return this.http.delete(i)}triedDish(t,i,s){let r=`/api/dishes/${t}`,n={user:i,status:s};return this.http.put(r,{reactions:n})}static \u0275fac=function(i){return new(i||e)(m(f))};static \u0275prov=a({token:e,factory:e.\u0275fac,providedIn:"root"})};export{D as a};
