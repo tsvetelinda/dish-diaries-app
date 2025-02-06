@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { ProfileComponent } from '../user/profile/profile.component';
-import { User } from '../types/user';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -23,11 +22,9 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
       ]),
     ]),
   ]
-  
 })
-export class HomeComponent {
-  user: User | null = null;
-  
+
+export class HomeComponent {  
   constructor(private userService: UserService) { }
 
   get isLoggedIn(): boolean {
