@@ -48,9 +48,12 @@ router.delete('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
-    const updatedDish = await Dish.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const { reactions } = req.body;
+    const updatedDish = await Dish.findByIdAndUpdate(
+      req.params.id,
+      { $push: { reactions } },
+      { new: true }
+    );
     if (!updatedDish) {
       return res.status(404).json({ message: 'Dish not found' });
     }

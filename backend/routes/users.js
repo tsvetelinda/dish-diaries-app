@@ -7,7 +7,7 @@ const jwt = require('../lib/jwt.js');
 
 const router = express.Router();
 
-router.post('/register', async (req, res) => {
+router.post('/register', async (req, res, next) => {
     try {
         const { email, password, chefName, favCuisine, cookingSkillLevel } = req.body;
 
@@ -29,14 +29,21 @@ router.post('/register', async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'Strict',
-            maxAge: 2 * 60 * 60 * 1000,
+            maxAge: 2 * 60 * 60 * 1000, // 2 hours
         });
 
-        return res.status(200).json({ message: 'Registration successful!' });
-    } catch(err) {
+        return res.status(200).json({
+            _id: newUser._id,
+            email: newUser.email,
+            chefName: newUser.chefName,
+            favCuisine: newUser.favCuisine,
+            cookingSkillLevel: newUser.cookingSkillLevel,            
+        });
+    } catch (err) {
         next(err);
     }
 });
+
 
 router.post('/login', async (req, res, next) => {
     try {
@@ -64,14 +71,11 @@ router.post('/login', async (req, res, next) => {
         });
 
         return res.status(200).json({
-            message: 'Login successful!',
-            user: {
-                _id: user._id,
-                email: user.email,
-                chefName: user.chefName,
-                favCuisine: user.favCuisine,
-                cookingSkillLevel: user.cookingSkillLevel,
-            },
+            _id: user._id,
+            email: user.email,
+            chefName: user.chefName,
+            favCuisine: user.favCuisine,
+            cookingSkillLevel: user.cookingSkillLevel,
         });
     } catch (err) {
         next(err);
@@ -80,19 +84,19 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/logout', (req, res) => {
     res.clearCookie(AUTH_COOKIE_NAME);
-    res.status(200).json({ message: 'Logout successful' });
+    res.status(200).end();
 });
 
 router.get('/profile', isAuth, async (req, res) => {
     try {
         const user = await User.findById(req.user._id).select('-password');
         if (!user) {
-          return res.status(404).json({ message: 'User not found' });
+            return res.status(404).end();
         }
         res.status(200).json(user);
-      } catch (err) {
-        res.status(500).json({ message: 'Something went wrong', error: err.message });
-      }
+    } catch (err) {
+        res.status(500).end();
+    }
 });
 
 router.put('/:id', async (req, res) => {

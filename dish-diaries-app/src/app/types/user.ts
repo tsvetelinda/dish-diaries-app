@@ -9,3 +9,11 @@ export interface User {
     "updatedAt": string;
     "__v": number;
 }
+
+export interface UserForAuth {
+    "_id": string;
+    "email": string;
+    "chefName": string;
+    "favCuisine": string;
+    "cookingSkillLevel": string;
+}
