@@ -82,9 +82,15 @@ router.post('/login', async (req, res, next) => {
 });
 
 router.post('/logout', (req, res) => {
+    /*
     res.clearCookie(AUTH_COOKIE_NAME);
-    req.session.destroy(() => {
-        res.status(200).end();
+    res.status(200).end();*/
+
+    res.clearCookie(AUTH_COOKIE_NAME, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none',
+        expires: new Date(0)
     });
 });
 
