@@ -42,12 +42,8 @@ export class UserService {
     .pipe(tap(() => this.user$$.next(null)));
   }
 
-  /*
   editProfile(userId: string | undefined, email: string, favCuisine: string, cookingSkillLevel: string) {
-    return this.http.put<User>(`/api/users/${userId}`, { email, favCuisine, cookingSkillLevel }).pipe(
-      tap((user) => {
-        localStorage.setItem('user', JSON.stringify(user));
-      })
-    );
-  }*/
+    return this.http.put<UserForAuth>(`/api/users/profile/${userId}`, { email, favCuisine, cookingSkillLevel })
+    .pipe(tap((user) => this.user$$.next(user)));
+  }
 }

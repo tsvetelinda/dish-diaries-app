@@ -1,6 +1,7 @@
 <div class="profile-container" @fadeInOut>
     @if (showEditForm) {
         <div class="form-card">
+            <h2>Edit {{user?.chefName}}'s Profile Data</h2>
             <form #form="ngForm" (ngSubmit)="editProfile(form)">
                 <label for="email">Email</label>
                 <input id="email" name="email" [class]="isFieldEmpty(inputEmail) || (inputEmail?.touched && inputEmail?.errors?.['emailValidator']) ? 'error-input' : 'standard-input'" appEmail required [ngModel]="user?.email" #inputEmail="ngModel">

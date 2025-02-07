@@ -44,7 +44,6 @@ router.post('/register', async (req, res, next) => {
     }
 });
 
-
 router.post('/login', async (req, res, next) => {
     try {
         const { email, password } = req.body;
@@ -107,7 +106,7 @@ router.put('/:id', async (req, res) => {
       if (!updatedUser) {
         return res.status(404).json({ message: 'User not found' });
       }
-      res.json(updatedUser);
+      res.status(200).json(updatedUser);
     } catch (err) {
       res.status(400).json({ message: err.message });
     }

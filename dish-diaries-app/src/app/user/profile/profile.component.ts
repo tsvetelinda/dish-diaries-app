@@ -75,7 +75,7 @@ export class ProfileComponent implements OnInit {
 
     const { email, favCuisine, cookingSkillLevel } = form.value;
     const userId = this.user?._id;
-    /*
+
     this.userService.editProfile(userId, email, favCuisine, cookingSkillLevel).subscribe({
       next: (updatedUser) => {
         this.user = updatedUser;
@@ -85,6 +85,6 @@ export class ProfileComponent implements OnInit {
         this.errMsg = err.error.message;
         form.reset();
       }
-    });*/
+    });
   }
 }
