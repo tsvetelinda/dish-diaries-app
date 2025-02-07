@@ -82,7 +82,11 @@ router.post('/login', async (req, res, next) => {
 });
 
 router.post('/logout', (req, res) => {
-    res.clearCookie(AUTH_COOKIE_NAME);
+    res.clearCookie(AUTH_COOKIE_NAME, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'None'
+    });
     res.status(200).end();
 });
 
