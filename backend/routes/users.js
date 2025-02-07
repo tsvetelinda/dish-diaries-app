@@ -90,7 +90,6 @@ router.post('/logout', (req, res) => {
     res.status(200).end();
 });
 
-
 router.get('/profile', isAuth, async (req, res) => {
     try {
         const user = await User.findById(req.user._id).select('-password');
