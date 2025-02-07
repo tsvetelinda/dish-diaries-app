@@ -35,6 +35,7 @@ export class ProfileComponent implements OnInit {
   showEditForm: boolean = false;
   errMsg: string | null = null;
   isLoadingRecipes: boolean = true;
+  isProfileLoaded: boolean = false;
   
   constructor(private userService: UserService, private apiService: ApiService, private router: Router) {}
 
@@ -42,16 +43,17 @@ export class ProfileComponent implements OnInit {
     this.userService.getProfile().subscribe({
       next: (profile) => {
         this.user = profile;
+        this.isProfileLoaded = true;
+      },
+      error: (err) => {
+        console.log(err.error.message);
+      }
+    });
 
-        this.apiService.getDishes().subscribe({
-          next: (dishes) => {
-            this.dishes = dishes.filter(dish => dish.chef.toString() === this.user?._id);
-            this.isLoadingRecipes = false;
-          },
-          error: (err) => {
-            console.log(err.error.message);
-          }
-        });
+    this.apiService.getDishes().subscribe({
+      next: (dishes) => {
+        this.dishes = dishes.filter(dish => dish.chef.toString() === this.user?._id);
+        this.isLoadingRecipes = false;
       },
       error: (err) => {
         console.log(err.error.message);
