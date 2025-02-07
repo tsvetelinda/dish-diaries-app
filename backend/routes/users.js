@@ -83,8 +83,11 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/logout', (req, res) => {
     res.clearCookie(AUTH_COOKIE_NAME);
-    res.status(200).end();
+    req.session.destroy(() => {
+        res.status(200).end();
+    });
 });
+
 
 router.get('/profile', isAuth, async (req, res) => {
     try {
