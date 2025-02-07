@@ -43,7 +43,7 @@ export class UserService {
   }
 
   editProfile(userId: string | undefined, email: string, favCuisine: string, cookingSkillLevel: string) {
-    return this.http.put<UserForAuth>(`/api/users/profile/${userId}`, { email, favCuisine, cookingSkillLevel })
+    return this.http.put<UserForAuth>(`/api/users/${userId}`, { email, favCuisine, cookingSkillLevel })
     .pipe(tap((user) => this.user$$.next(user)));
   }
 }
