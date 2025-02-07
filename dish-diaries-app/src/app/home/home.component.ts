@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { ProfileComponent } from '../user/profile/profile.component';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { UserForAuth } from '../types/user';
 
 @Component({
   selector: 'app-home',
@@ -24,10 +25,21 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   ]
 })
 
-export class HomeComponent {  
+export class HomeComponent implements OnInit {  
+  user: UserForAuth | null = null;
+  isLoggedIn: boolean = false;
+
   constructor(private userService: UserService) { }
 
-  get isLoggedIn(): boolean {
-    return this.userService.isLogged;
+  ngOnInit(): void {
+    this.userService.getProfile().subscribe({
+      next: (profile) => {
+        this.user = profile;
+        this.isLoggedIn = true;
+      },
+      error: (err) => {
+        console.log(err.error.message);
+      }
+    });
   }
 }
