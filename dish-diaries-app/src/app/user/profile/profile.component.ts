@@ -42,16 +42,16 @@ export class ProfileComponent implements OnInit {
     this.userService.getProfile().subscribe({
       next: (profile) => {
         this.user = profile;
-      },
-      error: (err) => {
-        console.log(err.error.message);
-      }
-    });
-    
-    this.apiService.getDishes().subscribe({
-      next: (dishes) => {
-        this.dishes = dishes.filter(dish => dish.chef.toString() === this.user?._id);
-        this.isLoadingRecipes = false;
+
+        this.apiService.getDishes().subscribe({
+          next: (dishes) => {
+            this.dishes = dishes.filter(dish => dish.chef.toString() === this.user?._id);
+            this.isLoadingRecipes = false;
+          },
+          error: (err) => {
+            console.log(err.error.message);
+          }
+        });
       },
       error: (err) => {
         console.log(err.error.message);
