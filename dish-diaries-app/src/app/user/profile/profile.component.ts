@@ -8,13 +8,14 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { EmailDirective } from '../../directives/email.directive';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { LoaderComponent } from '../../shared/loader/loader.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [SingleCardComponent, RouterLink, FormsModule, EmailDirective],
+  imports: [SingleCardComponent, RouterLink, FormsModule, EmailDirective, LoaderComponent],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css',
+  styleUrl: './profile.component.css', 
   animations: [
     trigger('fadeInOut', [
       state('in', style({ opacity: 1 })),
@@ -33,6 +34,7 @@ export class ProfileComponent implements OnInit {
   dishes: Dish[] = [];
   showEditForm: boolean = false;
   errMsg: string | null = null;
+  isLoadingRecipes: boolean = true;
   
   constructor(private userService: UserService, private apiService: ApiService, private router: Router) {}
 
@@ -49,6 +51,7 @@ export class ProfileComponent implements OnInit {
     this.apiService.getDishes().subscribe({
       next: (dishes) => {
         this.dishes = dishes.filter(dish => dish.chef.toString() === this.user?._id);
+        this.isLoadingRecipes = false;
       },
       error: (err) => {
         console.log(err.error.message);

@@ -272,16 +272,20 @@
         </div>
     }
     <div class="user-recipes">
-        @if (dishes && dishes.length > 0) {
-            <p class="prompt-msg">From your kitchen to the world: here are the recipes you've proudly shared!</p>
-            @for (item of dishes; track $index) {
-                <app-single-card [dish]="item"/>
-            }
+        @if (isLoadingRecipes) {
+            <app-loader />
         } @else {
-            <div class="prompt">
-                <p class="prompt-msg">Your recipe collection is looking a bit dish-appointing! Don't stew over it—whip up your first dish and let's get cooking!</p>
-                <button routerLink="/add">Add Dish</button>
-            </div>
+            @if (dishes && dishes.length > 0) {
+                <p class="prompt-msg">From your kitchen to the world: here are the recipes you've proudly shared!</p>
+                @for (item of dishes; track $index) {
+                    <app-single-card [dish]="item"/>
+                }
+            } @else {
+                <div class="prompt">
+                    <p class="prompt-msg">Your recipe collection is looking a bit dish-appointing! Don't stew over it—whip up your first dish and let's get cooking!</p>
+                    <button routerLink="/add">Add Dish</button>
+                </div>
+            }
         }
     </div>
 </div>
