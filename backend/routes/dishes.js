@@ -48,15 +48,30 @@ router.delete('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
-    const { reactions } = req.body;
+    const { dishName, chef, description, imageUrl, ingredients, instructions, dietaryPreferences, cookingTime, servings, cookingSkillLevel, reactions } = req.body;
+
     const updatedDish = await Dish.findByIdAndUpdate(
       req.params.id,
-      { $push: { reactions } },
-      { new: true }
+      {
+        dishName,
+        chef,
+        description,
+        imageUrl,
+        ingredients,
+        instructions,
+        dietaryPreferences,
+        cookingTime,
+        servings,
+        cookingSkillLevel,
+        ...(reactions && { $push: { reactions } })
+      },
+      { new: true, runValidators: true }
     );
+
     if (!updatedDish) {
       return res.status(404).json({ message: 'Dish not found' });
     }
+
     res.json(updatedDish);
   } catch (err) {
     res.status(400).json({ message: err.message });
