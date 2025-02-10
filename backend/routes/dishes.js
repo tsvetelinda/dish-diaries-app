@@ -66,7 +66,7 @@ router.put('/:id', async (req, res) => {
         ...(reactions && { $push: { reactions } })
       },
       { new: true, runValidators: true }
-    );
+    ).populate('chef', 'chefName');
 
     if (!updatedDish) {
       return res.status(404).json({ message: 'Dish not found' });
