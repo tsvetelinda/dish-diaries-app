@@ -5,14 +5,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../user/user.service';
 import { EditComponent } from '../edit/edit.component';
 import { EditDishResult } from '../../types/edit-dish-result';
-import { DatePipe } from '@angular/common';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { UserForAuth } from '../../types/user';
+import { ElapsedTimePipe } from '../../pipes/elapsed-time.pipe';
 
 @Component({
   selector: 'app-details',
   standalone: true, 
-  imports: [EditComponent, DatePipe],
+  imports: [EditComponent, ElapsedTimePipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
   animations: [

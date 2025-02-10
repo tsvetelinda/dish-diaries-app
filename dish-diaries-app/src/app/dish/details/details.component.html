@@ -876,7 +876,7 @@ c-309 147 -610 225 -913 237 -63 2 -137 3 -165 1z"/>
             </ol>
                 </div>
             </div>
-            <p class="created-date">Created {{dish?.createdAt | date:'fullDate'}}</p>
+            <p class="created-date">Created {{dish?.createdAt! | elapsedTime}}</p>
         </div>
     </div>
 }

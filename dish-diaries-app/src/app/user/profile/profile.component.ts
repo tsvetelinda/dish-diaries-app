@@ -9,6 +9,7 @@ import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { EmailDirective } from '../../directives/email.directive';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { LoaderComponent } from '../../shared/loader/loader.component';
+import { ElapsedTimePipe } from '../../pipes/elapsed-time.pipe';
 
 @Component({
   selector: 'app-profile',
