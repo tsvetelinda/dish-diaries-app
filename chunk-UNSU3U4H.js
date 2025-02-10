@@ -1,4 +1,4 @@
-import{a as f}from"./chunk-HGLNSWWQ.js";import{O as a,T as m}from"./chunk-KAITKATV.js";var D=class e{constructor(t){this.http=t}getDishes(){return this.http.get("/api/dishes")}getSingleDish(t){let i=`/api/dishes/${t}`;return this.http.get(i)}addDish(t,i,s,r,n,o,h,p,u,g){let d="/api/dishes",l=n.split(`
+import{a as f}from"./chunk-TPPXSH5E.js";import{R as a,W as m}from"./chunk-I5RZUSNV.js";var D=class e{constructor(t){this.http=t}getDishes(){return this.http.get("/api/dishes")}getSingleDish(t){let i=`/api/dishes/${t}`;return this.http.get(i)}addDish(t,i,s,r,n,o,h,p,u,g){let d="/api/dishes",l=n.split(`
 `),c=o.split(`
 `);return this.http.post(d,{dishName:t,chef:i,description:s,imageUrl:r,ingredients:l,instructions:c,dietaryPreferences:h,cookingTime:p,servings:u,cookingSkillLevel:g})}editDish(t,i,s,r,n,o,h,p,u,g,d){let l=`/api/dishes/${t}`,c=o.split(`
 `),b=h.split(`
