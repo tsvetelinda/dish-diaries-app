@@ -84,6 +84,7 @@ export class DetailsComponent implements OnInit {
   onFormSubmitted(event: EditDishResult) {
     this.showEdit = event.showEdit;
     this.dish = event.updatedDish; 
+    this.currentUser = event.user;
   }
 
   triedIt() {

@@ -5,6 +5,7 @@ import { ApiService } from '../../api.service';
 import { EditDishResult } from '../../types/edit-dish-result';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ImageDirective } from '../../directives/image.directive';
+import { UserService } from '../../user/user.service';
 
 @Component({
   selector: 'app-edit',
@@ -31,7 +32,7 @@ export class EditComponent {
 
   errMsg: string | null = null;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private userService: UserService) { }
 
   isFieldEmpty(controlName: NgModel) {
     return controlName?.touched && controlName?.errors?.['required'];
@@ -51,10 +52,19 @@ export class EditComponent {
     this.apiService.editDish(this.dish?._id, dishName, chef, description, imageUrl, ingredients, instructions, dietaryPreferences, cookingTime, servings, cookingSkillLevel).subscribe({
       next: (updatedDish) => {
         this.dish = updatedDish;
-        this.formSubmitted.emit({
-          showEdit: false, 
-          updatedDish
-        }); 
+
+        this.userService.getProfile().subscribe({
+          next: (user) => {
+            this.formSubmitted.emit({
+              showEdit: false, 
+              updatedDish,
+              user
+            }); 
+          },
+          error: (err) => {
+            console.error('Error fetching user info:', err);
+          }
+        });
       },
       error: (err) => {
         this.errMsg = err.error.message;
