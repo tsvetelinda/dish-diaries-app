@@ -32,27 +32,28 @@ export class TriedComponent implements OnInit {
   disliked: Dish[] = [];
 
   constructor(private apiService: ApiService, private userService: UserService) {}
+ngOnInit(): void {
+  this.userService.getProfile().subscribe({
+    next: (profile) => {
+      this.user = profile;
 
-  ngOnInit(): void {
-    this.userService.getProfile().subscribe({
-      next: (profile) => {
-        this.user = profile;
-      },
-      error: (err) => {
-        console.log(err.error.message);
-      }
-    });
-    
-    this.apiService.getDishes().subscribe({
-      next: (dishes) => {
-        this.liked = dishes.filter(dish => 
-          dish.reactions.some(r => r.status === 'liked' && r.user.toString() === this.user?._id));
-        this.disliked = dishes.filter(dish => 
-          dish.reactions.some(r => r.status === 'disliked' && r.user.toString() === this.user?._id));
-      },
-      error: (err) => {
-        console.log(err.error.message);
-      }
-    });
-  }
+      this.apiService.getDishes().subscribe({
+        next: (dishes) => {
+          this.liked = dishes.filter(dish =>
+            dish.reactions.some(r => r.status === 'liked' && r.user.toString() === this.user?._id)
+          );
+          this.disliked = dishes.filter(dish =>
+            dish.reactions.some(r => r.status === 'disliked' && r.user.toString() === this.user?._id)
+          );
+        },
+        error: (err) => {
+          console.log(err.error.message);
+        }
+      });
+    },
+    error: (err) => {
+      console.log(err.error.message);
+    }
+  });
+}
 }
