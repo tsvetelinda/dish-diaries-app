@@ -9,7 +9,6 @@
         <li routerLink="/search">Search</li>
         @if (isLoggedIn) {
             <li routerLink="/add">Add a Dish</li>
-            <li routerLink="/tried">Tried it!</li>
             <li (click)="logout()">Logout</li>
         } @else {
             @if (isNotHomePage && isNotLoginPage && isNotRegisterPage) {
